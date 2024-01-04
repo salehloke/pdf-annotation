@@ -1,0 +1,11 @@
+{
+  "name": "pdf-annotate",
+  "version": "1.0.0",
+  "description": "filled in pdf with data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Azie",
+  "license": "ISC"
+}

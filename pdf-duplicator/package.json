@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "modify": "npm run build && node dist/index.js"
+  },
+
+  "compilerOptions": {
+    "esModuleInterop": true
   },
   "author": "saleh",
   "license": "ISC",
   "dependencies": {
     "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "ts-node": "^10.9.2"
   }
 }

@@ -1,17 +1,15 @@
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { promises as fs } from 'fs';
+
+// reusable functions
 import { rotatePage } from "./rotate-page.js";
 import { signTrustee1 } from "./sign-trustee1.js";
 import { signTrustee2 } from "./sign-trustee2.js";
 import { signPolicyHolder } from "./sign-policyholder.js";
 import { signWitness } from "./sign-witness.js";
 
-const coordinatesSOT1 = {
-  x: 105,
-  y: 512,
-  xRatio: 0.480178876,
-  yRatio: 0.23375
-}
+import {category1_scenario6} from "./category1-scenario6.js"
+import {category1_scenario7} from "./category1-scenario7.js"
 
 const signatureImagesArr =
 [
@@ -91,11 +89,14 @@ export async function modifySignatureAndSavePDFs(inputPath, outputFolder, count)
 
 
 
+
+
 const inputPath = './shared/pdf-samples/unsigned-nomination-form.pdf';
 const signatureImagePath = './shared/signature-png/signature1_type1.png';
 // const inputPath = '../../shared/pdf-samples/unsigned-nomination-form.pdf';
 const outputFolder = './shared/scenario-1';
-const count = 20;
+const count = 10;
 
 console.log('start')
-modifySignatureAndSavePDFs(inputPath, outputFolder, count);
+category1_scenario6(inputPath, 10);
+category1_scenario7(inputPath, 10);

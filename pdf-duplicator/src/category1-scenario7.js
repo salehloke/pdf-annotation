@@ -27,9 +27,9 @@ const signatureImagesArr =
   }
 ]
 
-export async function category1_scenario6(inputPath, count) {
+export async function category1_scenario7(inputPath, count) {
   try {
-    const caseName = 'category1-scenario6'
+    const caseName = 'category1-scenario7'
     const outputFolder = `./shared/${caseName}`;
 
     // Check if the file exists
@@ -59,18 +59,14 @@ export async function category1_scenario6(inputPath, count) {
       }
       console.log('signatureCount', iterate)
       const signatureImagePath = signatureImagesArr[signatureCount].imagePath
-      // Add a signature image
-      // const signatureImageBytes = await fs.readFile(signatureImagePath);
-      // const signatureImage = await pdfDoc.embedPng(signatureImageBytes);
-      // const imageWidth = 100; // Adjust the width of the signature image as needed
-      // const imageHeight = (imageWidth / signatureImage.width) * signatureImage.height;
+      
       console.log(`width:${width}, Height: ${height}, signatureCount: ${signatureCount}`)
 
-      const signatureTrustee1 =await signTrustee1(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
-      const signatureTrustee2 =await signTrustee2(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
-      const signaturePolicyHolder =await signPolicyHolder(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
-      const signatureWitness =await signWitness(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
-      const rotatedPage =await rotatePage(signaturePage,0,pdfDoc)
+      await signTrustee1(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
+      await signTrustee2(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
+      await signPolicyHolder(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
+      await signWitness(signaturePage,signatureImagesArr[signatureCount].imagePath,pdfDoc)
+      await rotatePage(signaturePage,270,pdfDoc)
 
 
       // Save the modified PDF with a different name

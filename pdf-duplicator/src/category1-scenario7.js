@@ -27,9 +27,10 @@ const signatureImagesArr =
   }
 ]
 
-export async function category1_scenario7(inputPath, count) {
+export async function category1_scenario7(inputPath, description, count) {
   try {
-    const caseName = 'category1-scenario7'
+    const caseName = `${description}-category1-scenario7`;
+
     const outputFolder = `./shared/${caseName}`;
 
     // Check if the file exists

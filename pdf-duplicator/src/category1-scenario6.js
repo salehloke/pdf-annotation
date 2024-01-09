@@ -27,9 +27,9 @@ const signatureImagesArr =
   }
 ]
 
-export async function category1_scenario6(inputPath, count) {
+export async function category1_scenario6(inputPath, description, count) {
   try {
-    const caseName = 'category1-scenario6'
+    const caseName = `${description}-category1-scenario6`;
     const outputFolder = `./shared/${caseName}`;
 
     // Check if the file exists
@@ -57,7 +57,6 @@ export async function category1_scenario6(inputPath, count) {
       } else{
         signatureCount = i
       }
-      console.log('signatureCount', iterate)
       const signatureImagePath = signatureImagesArr[signatureCount].imagePath
       // Add a signature image
       // const signatureImageBytes = await fs.readFile(signatureImagePath);
@@ -90,13 +89,3 @@ export async function category1_scenario6(inputPath, count) {
 }
 
 
-
-
-// const inputPath = './shared/pdf-samples/unsigned-nomination-form.pdf';
-// const signatureImagePath = './shared/signature-png/signature1_type1.png';
-// // const inputPath = '../../shared/pdf-samples/unsigned-nomination-form.pdf';
-// const outputFolder = './shared/scenario-1';
-// const count = 10;
-
-// console.log('start')
-// category1_scenario6(inputPath, outputFolder, count);

@@ -9,7 +9,19 @@
   },
   "author": "saleh",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salehloke/pdf-annotation.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/salehloke/pdf-annotation/issues"
+  },
+  "homepage": "https://github.com/salehloke/pdf-annotation#readme",
   "dependencies": {
+    "docxtemplater": "^3.42.7",
+    "express": "^4.18.2",
+    "officegen": "^0.6.5",
     "archiver": "^6.0.1"
   }
 }

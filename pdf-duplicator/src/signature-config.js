@@ -18,18 +18,6 @@ export const GLOBAL_CONFIG = {
 
   SIGNATURE_IMAGES_ARR: [
     {
-      imagePath: "./shared/signature-png/person1_type1.png"
-    },
-    {
-      imagePath: "./shared/signature-png/person1_type2.png"
-    },
-    {
-      imagePath: "./shared/signature-png/person1_type3.png"
-    },
-    {
-      imagePath: "./shared/signature-png/person1_type4.png"
-    },
-    {
       imagePath: "./shared/signature-png/person1_type5.png"
     },
     {

@@ -29,7 +29,7 @@ export async function annotateFormPage1(pdfDoc, isMuslim) {
     const nominee1 = await generatePersonData()
     const formData =  {
       policyNo: faker.phone.imei(),
-      policyOwner: policyOwnerObj.name + policyOwnerObj.name,
+      policyOwner: policyOwnerObj.name,
       policyOwnerICNo: policyOwnerObj.IDNumber,
       isNoChild: policyOwnerObj.isNotHavingChild,
       isSingle: policyOwnerObj.isSingle,
@@ -81,7 +81,7 @@ export async function annotateFormPage1(pdfDoc, isMuslim) {
   }
 }
 
-export async function nameGenerator(isMale){
+export async function nameGenerator(isMale, isMuslim){
   let name1
   let name2
   let fullName
@@ -93,7 +93,11 @@ export async function nameGenerator(isMale){
      name2 = faker.person.fullName( {
       sex: 'male'
     })
-    fullName = name1 + ' Bin ' + name2
+    if(isMuslim){
+      fullName = name1 + ' Bin ' + name2
+    } else {
+      fullName = name1 + ' ' + name2
+    }
   }
   else{{
      name1 = faker.person.fullName( {
@@ -104,7 +108,11 @@ export async function nameGenerator(isMale){
       sex: 'female'
     })
 
-    fullName = name1 + ' Binti ' + name2
+    if(isMuslim){
+      fullName = name1 + ' Binti ' + name2
+    } else {
+      fullName = name1 + ' ' + name2
+    }
 
   }}
 
@@ -116,7 +124,7 @@ export async function generatePersonData() {
   try {
 
     const isMale = faker.datatype.boolean()
-    let fullName = await nameGenerator(isMale)
+    let fullName = await nameGenerator(isMale, false)
     
 
 

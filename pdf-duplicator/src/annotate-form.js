@@ -18,7 +18,7 @@ import { GLOBAL_CONFIG } from "./signature-config.js";
 const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
 
-export async function annotateFormPage1(pdfDoc, isMuslim) {
+export async function annotateFormPage1(pdfDoc, isMuslimForm) {
   try {
     // Load the existing PDF
     // const pdfDoc = await PDFDocument.load(existingPdfBytes);
@@ -68,7 +68,7 @@ export async function annotateFormPage1(pdfDoc, isMuslim) {
     policyOwnerICNo.setText(formData.policyOwnerICNo)
     isSingle.check()
     isNoChild.check()
-    if(isMuslim){
+    if(isMuslimForm){
       isMuslim.check()
     } else{
       isNonMuslim.check()

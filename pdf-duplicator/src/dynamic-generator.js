@@ -8,11 +8,13 @@ import { signTrustee2 } from "./sign-trustee2.js";
 import { signPolicyHolder } from "./sign-policyholder.js";
 import { signWitness } from "./sign-witness.js";
 import { signUniversalCoordinates } from "./sign-universal-coordinate.js";
+import { annotateFormPage1 } from "./annotate-form.js";
 
 // Folder functions
 import { createFolderIfNotExists } from "./create-folder.js";
 import { compressFolder } from "./compress-folder.js";
 import { GLOBAL_CONFIG } from "./signature-config.js";
+
 
 const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
@@ -52,6 +54,10 @@ export async function dynamicTestCaseGenerator(categoryNum, scenarioNum, count) 
     for (let i = 1; i <= count; i++) {
       // Load the existing PDF
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+      annotateFormPage1(pdfDoc, isMuslim)
+     
+      
 
       // Modify the PDF - for example, add a text annotation to the first page
       const pages = pdfDoc.getPages();

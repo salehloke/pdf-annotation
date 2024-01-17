@@ -14,8 +14,6 @@ import { category1_scenario6 } from "./category1-scenario6.js";
 import { category1_scenario7 } from "./category1-scenario7.js";
 
 // CATEGORY 3
-import { category3_scenario35 } from "./category3-scenario35.js";
-import { annotateForm } from "./annotate-form.js";
 import { dynamicTestCaseGenerator } from "./dynamic-generator.js";
 
 const formType1 = GLOBAL_CONFIG.NON_MUSLIM_NOMINATION_WITH_DATA;

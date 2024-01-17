@@ -26,7 +26,6 @@ export async function category1_scenario6(inputPath, description, count) {
     for (let i = 1; i <= count; i++) {
       // Load the existing PDF
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
-
       // Modify the PDF - for example, add a text annotation to the first page
       const pages = pdfDoc.getPages();
       const signaturePage = pages[4];
@@ -82,11 +81,11 @@ export async function category1_scenario6(inputPath, description, count) {
 
       const modifiedPdfBytes = await pdfDoc.save();
       await fs.writeFile(outputPath, modifiedPdfBytes);
-      console.log(
-        `PDF ${i} successfully modified and saved as ${outputFileName}`
-      );
+      // console.log(
+      //   `PDF ${i} successfully modified and saved as ${outputFileName}`
+      // );
     }
-    await compressFolder(outputFolder, `./shared/compressed/${caseName}.zip`);
+    // await compressFolder(outputFolder, `./shared/compressed/${caseName}.zip`);
   } catch (error) {
     console.error("Error modifying and saving PDFs:", error);
   }

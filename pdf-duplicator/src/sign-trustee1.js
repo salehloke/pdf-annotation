@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 
-export async function signTrustee1(signaturePage, signatureImagePath, pdfDoc) {
+export async function signTrustee1(signaturePage, signatureImagePath, pdfDoc, ) {
   const coordinatesSOT1 = {
     x: 166,
     y: 512,

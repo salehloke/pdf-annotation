@@ -46,9 +46,9 @@ export async function category1_scenario7(inputPath, description, count) {
       console.log("signatureCount", iterate);
       const signatureImagePath = signatureImagesArr[signatureCount].imagePath;
 
-      console.log(
-        `width:${width}, Height: ${height}, signatureCount: ${signatureCount}`
-      );
+      // console.log(
+      //   `width:${width}, Height: ${height}, signatureCount: ${signatureCount}`
+      // );
 
       await signTrustee1(
         signaturePage,
@@ -80,9 +80,9 @@ export async function category1_scenario7(inputPath, description, count) {
 
       const modifiedPdfBytes = await pdfDoc.save();
       await fs.writeFile(outputPath, modifiedPdfBytes);
-      console.log(
-        `PDF ${i} successfully modified and saved as ${outputFileName}`
-      );
+      // console.log(
+      //   `PDF ${i} successfully modified and saved as ${outputFileName}`
+      // );
     }
     await compressFolder(outputFolder, `./shared/compressed/${caseName}.zip`);
   } catch (error) {

@@ -30,10 +30,8 @@ console.log("start");
 // category1_scenario7(formType1.pdfPath, formType1.decription, 20);
 // category1_scenario6(formType5.pdfPath, formType5.decription, 20);
 
-
 // annotateForm(formType5.pdfPath, formType5.decription, 20)
 // NON-MUSLIM + MANUAL SCANNED
 // category3_scenario35(formType3.pdfPath, formType3.decription, 20);
 
-
-dynamicTestCaseGenerator(1,32, 20)
+dynamicTestCaseGenerator(1, 32, 100);

@@ -7,7 +7,7 @@ export async function signPolicyHolder(
 ) {
   const coordinatesSign = {
     x: 710,
-    y: 724,
+    y: 800,
     xRatio: 0.480178876,
     yRatio: 0.23375
   };
@@ -16,7 +16,7 @@ export async function signPolicyHolder(
   const { width, height } = signaturePage.getSize();
   const signatureImageBytes = await fs.readFile(signatureImagePath);
   const signatureImage = await pdfDoc.embedPng(signatureImageBytes);
-  const imageWidth = 60; // Adjust the width of the signature image as needed
+  const imageWidth = 150; // Adjust the width of the signature image as needed
   const imageHeight =
     (imageWidth / signatureImage.width) * signatureImage.height;
 

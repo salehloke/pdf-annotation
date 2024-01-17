@@ -25,18 +25,26 @@ export async function annotateFormPage1(pdfDoc, isMuslim) {
 
     const form = pdfDoc.getForm()
     
-    const policyOwnerObj = await generatePersonData(true)
-    const nominee1 = await generatePersonData(true)
+    const policyOwnerObj = await generatePersonData()
+    const nominee1 = await generatePersonData()
     const formData =  {
       policyNo: faker.phone.imei(),
       policyOwner: policyOwnerObj.name + policyOwnerObj.name,
       policyOwnerICNo: policyOwnerObj.IDNumber,
       isNoChild: policyOwnerObj.isNotHavingChild,
       isSingle: policyOwnerObj.isSingle,
+
       nominee1_name: nominee1.name,
       nominee1_gender: nominee1.gender,
       nominee1_IDDesc: 'IC',
-      nominee1_IDNumber: nominee1.IDNumber
+      nominee1_IDNumber: nominee1.IDNumber,
+      nominee1_newIcNo: nominee1.IDNumber,
+      nominee1_dateOfBirth: nominee1.dateOfBirth,
+      nominee1_nationality: nominee1.nationality,
+      nominee1_occupation: nominee1.occupation,
+      nominee1_nameOfEmployer: nominee1.nameOfEmployer,
+      nominee1_natureOfBusiness: nominee1.natureOfBusiness,
+      nominee1_relationshipToPolicyOwner: nominee1.relationshipToPolicyOwner,
     }
 
     // page1
@@ -51,21 +59,9 @@ export async function annotateFormPage1(pdfDoc, isMuslim) {
     // -----------------
 
     // page2
-    /** NOMINEE 1 */
-    const nominee1_name = form.getTextField('nominee1_name')
-    nominee1_name.enableMultiline()
-    const nominee1_gender = form.getTextField('nominee1_gender')
-    const nominee1_IDDesc = form.getTextField('nominee1_IDDesc')
-    const nominee1_IDNumber = form.getTextField('nominee1_IDNumber')
-
-
-    const nominee2_name = form.getTextField('nominee2_name')
-    nominee2_name.enableMultiline()
-
-    const nominee2_gender = form.getTextField('nominee2_gender')
-    // ----------------
-
-
+    anotateNominee1(form, formData)
+    
+    
     // SET PAGE 1
     policyNo.setText(formData.policyNo)
     policyOwner.setText(formData.policyOwner)
@@ -78,14 +74,6 @@ export async function annotateFormPage1(pdfDoc, isMuslim) {
       isNonMuslim.check()
     }
 
-    // SET PAGE 2
-    nominee1_name.setText(formData.nominee1_name)
-    nominee1_gender.setText(formData.nominee1_gender)
-    nominee1_IDDesc.setText(formData.nominee1_IDDesc)
-    nominee1_IDNumber.setText(formData.nominee1_IDNumber)
-    
-    nominee2_name.setText(formData.nominee2_name)
-    nominee2_gender.setText(formData.nominee2_gender)
 
     return form
   } catch (error) {
@@ -93,31 +81,45 @@ export async function annotateFormPage1(pdfDoc, isMuslim) {
   }
 }
 
+export async function nameGenerator(isMale){
+  let name1
+  let name2
+  let fullName
+  if(isMale){
+     name1 = faker.person.fullName( {
+      sex: 'male'
+    })
+
+     name2 = faker.person.fullName( {
+      sex: 'male'
+    })
+    fullName = name1 + ' Bin ' + name2
+  }
+  else{{
+     name1 = faker.person.fullName( {
+      sex: 'female'
+    })
+
+     name2 = faker.person.fullName( {
+      sex: 'female'
+    })
+
+    fullName = name1 + ' Binti ' + name2
+
+  }}
+
+  return fullName
+}
 
 
-export async function generatePersonData(isMale) {
+export async function generatePersonData() {
   try {
-    let name1
-    let name2
-    if(isMale){
-       name1 = faker.person.fullName( {
-        sex: 'male'
-      })
 
-       name2 = faker.person.fullName( {
-        sex: 'male'
-      })
-    }
-    else{{
-       name1 = faker.person.fullName( {
-        sex: 'female'
-      })
+    const isMale = faker.datatype.boolean()
+    let fullName = await nameGenerator(isMale)
+    
 
-       name2 = faker.person.fullName( {
-        sex: 'female'
-      })
 
-    }}
     const yearRandom = faker.number.int({max:2000, min:1957})
     const yearIDStr = `${yearRandom}`
     const yearID = yearIDStr.slice(1,3)
@@ -129,17 +131,64 @@ export async function generatePersonData(isMale) {
     const midIDNumber = faker.number.int({max:99, min:10})
     const lastIDNumber = faker.number.int({max:9999, min:1000})
     const id = `${yearID}${monthID}${dayID}-${midIDNumber}-${lastIDNumber}`
+    const nationality = 'Malaysia'
 
     const personData = {
-      name: name1 + ' Bin ' + name2,
+      name: fullName,
       isMarried: false,
       isSingle: true,
       isNoChild: true,
       gender: isMale ? 'male' : 'female',
-      IDNumber: id
+      IDNumber: id,
+      dateOfBirth: `${dayRandom}/${monthID}/${yearRandom}`,
+      nationality: nationality,
+      occupation: faker.person.jobTitle(),
+      nameOfEmployer: faker.company.name(),
+      relationshipToPolicyOwner: 'Family',
+      natureOfBusiness: 'technology'
     }
 
     console.log(personData)
+    return personData
+  } catch (error) {
+  }
+}
+
+
+
+export async function anotateNominee1(form,formData) {
+  try {
+    const nominee1 = await generatePersonData()
+ 
+    // page2
+    /** NOMINEE 1 */
+    const nominee1_name = form.getTextField('nominee1_name')
+    nominee1_name.enableMultiline()
+    const nominee1_gender = form.getTextField('nominee1_gender')
+    const nominee1_IDDesc = form.getTextField('nominee1_IDDesc')
+    const nominee1_IDNumber = form.getTextField('nominee1_IDNumber')
+    const nominee1_newIcNo = form.getTextField('nominee1_newIcNo')
+    const nominee1_dateOfBirth = form.getTextField('nominee1_dateOfBirth')
+    const nominee1_nationality = form.getTextField('nominee1_nationality')
+    const nominee1_occupation = form.getTextField('nominee1_occupation')
+    const nominee1_nameOfEmployer = form.getTextField('nominee1_nameOfEmployer')
+    const nominee1_natureOfBusiness = form.getTextField('nominee1_natureOfBusiness')
+    const nominee1_relationshipToPolicyOwner = form.getTextField('nominee1_relationshipToPolicyOwner')
+
+    // ----------------
+
+
+    nominee1_name.setText(formData.nominee1_name)
+    nominee1_gender.setText(formData.nominee1_gender)
+    nominee1_IDDesc.setText(formData.nominee1_IDDesc)
+    nominee1_IDNumber.setText(formData.nominee1_IDNumber)
+    nominee1_newIcNo.setText(formData.nominee1_newIcNo)
+    nominee1_dateOfBirth.setText(formData.nominee1_dateOfBirth)
+    nominee1_nationality.setText(formData.nominee1_nationality)
+    nominee1_occupation.setText(formData.nominee1_occupation)
+    nominee1_nameOfEmployer.setText(formData.nominee1_nameOfEmployer)
+    nominee1_natureOfBusiness.setText(formData.nominee1_natureOfBusiness)
+    nominee1_relationshipToPolicyOwner.setText(formData.nominee1_relationshipToPolicyOwner)
     return personData
   } catch (error) {
   }

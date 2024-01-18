@@ -1,10 +1,10 @@
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { promises as fs } from "fs";
 import { rotatePage } from "./rotate-page.js";
-import { signTrustee1 } from "./sign-trustee1.js";
-import { signTrustee2 } from "./sign-trustee2.js";
-import { signPolicyHolder } from "./sign-policyholder.js";
-import { signWitness } from "./sign-witness.js";
+import { signTrustee1 } from "./signature-utils/sign-trustee1.js";
+import { signTrustee2 } from "./signature-utils/sign-trustee2.js";
+import { signPolicyHolder } from "./signature-utils/sign-policyholder.js";
+import { signWitness } from "./signature-utils/sign-witness.js";
 import { createFolderIfNotExists } from "./create-folder.js";
 import { compressFolder } from "./compress-folder.js";
 import { GLOBAL_CONFIG } from "./signature-config.js";

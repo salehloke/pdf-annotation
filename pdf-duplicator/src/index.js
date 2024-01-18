@@ -3,10 +3,10 @@ import { promises as fs } from "fs";
 
 // reusable functions
 import { rotatePage } from "./rotate-page.js";
-import { signTrustee1 } from "./sign-trustee1.js";
-import { signTrustee2 } from "./sign-trustee2.js";
-import { signPolicyHolder } from "./sign-policyholder.js";
-import { signWitness } from "./sign-witness.js";
+import { signTrustee1 } from "./signature-utils/sign-trustee1.js";
+import { signTrustee2 } from "./signature-utils/sign-trustee2.js";
+import { signPolicyHolder } from "./signature-utils/sign-policyholder.js";
+import { signWitness } from "./signature-utils/sign-witness.js";
 import { GLOBAL_CONFIG } from "./signature-config.js";
 
 // CATEGORY 1
@@ -25,7 +25,6 @@ const formType5 = GLOBAL_CONFIG.UNSIGNED_DIGITAL_FORM_PORTRAIT_NO_DATA_AUTOFILL;
 
 console.log("start");
 
-// NON-MUSLIM + DIGITAL FORM + WITH DATA
 // category1_scenario6(formType1.pdfPath, formType1.decription, 20);
 // category1_scenario7(formType1.pdfPath, formType1.decription, 20);
 // category1_scenario6(formType5.pdfPath, formType5.decription, 20);
@@ -34,4 +33,9 @@ console.log("start");
 // NON-MUSLIM + MANUAL SCANNED
 // category3_scenario35(formType3.pdfPath, formType3.decription, 20);
 
-dynamicTestCaseGenerator(1, 32, 100);
+// 
+// NON-MUSLIM + DIGITAL FORM: APPROVED CASES
+dynamicTestCaseGenerator(1, 38, 100);
+dynamicTestCaseGenerator(1, 39, 100);
+dynamicTestCaseGenerator(1, 40, 100);
+dynamicTestCaseGenerator(1, 41, 100);

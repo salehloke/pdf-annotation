@@ -3,11 +3,11 @@ import { promises as fs } from "fs";
 
 // page functions
 import { rotatePage } from "./rotate-page.js";
-import { signTrustee1 } from "./sign-trustee1.js";
-import { signTrustee2 } from "./sign-trustee2.js";
-import { signPolicyHolder } from "./sign-policyholder.js";
-import { signWitness } from "./sign-witness.js";
-import { signUniversalCoordinates } from "./sign-universal-coordinate.js";
+import { signTrustee1 } from "./signature-utils/sign-trustee1.js";
+import { signTrustee2 } from "./signature-utils/sign-trustee2.js";
+import { signPolicyHolder } from "./signature-utils/sign-policyholder.js";
+import { signWitness } from "./signature-utils/sign-witness.js";
+import { signUniversalCoordinates } from "./signature-utils/sign-universal-coordinate.js";
 import { annotateFormPage1 } from "./annotate-form.js";
 
 // Folder functions

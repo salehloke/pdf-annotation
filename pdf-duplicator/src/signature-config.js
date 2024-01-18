@@ -43,26 +43,32 @@ export const GLOBAL_CONFIG = {
     { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 },
     { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: true,  pageRotation: 0 },
     { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: false,  pageRotation: 0 }, // 15
-    { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 0 },
-    { isBLPassed: false, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 },
+    { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 0 }, // 16
+    { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 90 }, // 17
+    { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 180 }, // 18
+    { isBLPassed: false, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 270 }, // 19
+    { isBLPassed: false, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 }, 
     { isBLPassed: false, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: false, signatureOfPolicyHolder: true,  pageRotation: 0 },
     { isBLPassed: false, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: false,  pageRotation: 0 },
-    { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 0 }, // 20
+    { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 0 }, // 23
+    { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 90 }, // 24
+    { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 180 }, // 25
+    { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 270 }, // 26
     { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 },
     { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: true,  pageRotation: 0 },
     { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: false,  pageRotation: 0 },
-    { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 0 },
-    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: false, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 }, // 25
+    { isBLPassed: true, signatureOfTrustee1: false, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 0 }, // 30
+    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: false, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 }, 
     { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: false, signatureOfWitness: false, signatureOfPolicyHolder: true,  pageRotation: 0 },
     { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: false,  pageRotation: 0 },
     { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: false, signatureOfWitness: true, signatureOfPolicyHolder: true,  pageRotation: 0 },
-    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 },
-    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: true,  pageRotation: 0 }, // 30
+    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: false,  pageRotation: 0 }, // 35
+    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: false, signatureOfPolicyHolder: true,  pageRotation: 0 }, 
     { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: false,  pageRotation: 0 },
-    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true, pageRotation: 0 }, // 32
+    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true, pageRotation: 0 }, 
     { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true, pageRotation: 90 }, 
-    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true, pageRotation: 180 },  
-    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true, pageRotation: 270 } // 35
+    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true, pageRotation: 180 },  // 40
+    { isBLPassed: true, signatureOfTrustee1: true, signatureOfTrustee2: true, signatureOfWitness: true, signatureOfPolicyHolder: true, pageRotation: 270 } 
   ],
   
 

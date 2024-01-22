@@ -35,7 +35,7 @@ console.log("start");
 
 // 
 // NON-MUSLIM + DIGITAL FORM: APPROVED CASES
-// dynamicTestCaseGenerator(1, 38, 100);
+dynamicTestCaseGenerator(1, 38, 100);
 // dynamicTestCaseGenerator(1, 39, 100);
 // dynamicTestCaseGenerator(1, 40, 100);
-dynamicTestCaseGenerator(1, 41, 100);
+// dynamicTestCaseGenerator(1, 41, 100);

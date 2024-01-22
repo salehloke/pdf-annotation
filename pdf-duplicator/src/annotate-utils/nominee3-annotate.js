@@ -67,7 +67,8 @@ export async function anotateNominee3(form,formData) {
     nominee3_contactNumberOffice.setText(formData.nominee3_contactNumberOffice)
     nominee3_contactNumberMobile.setText(formData.nominee3_contactNumberMobile)
     nominee3_purposeOfNomination.setText(formData.nominee3_purposeOfNomination)
-    return personData
+
+    console.log('nominee3_annotated', formData.nominee3_name)
   } catch (error) {
   }
 }

@@ -19,7 +19,7 @@ const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
 
 
-export async function anotateNominee2(form,formData) {
+export async function anotateNominee22(form,formData) {
   try {
     const nominee2 = await generatePersonData()
  
@@ -67,7 +67,7 @@ export async function anotateNominee2(form,formData) {
     nominee2_contactNumberOffice.setText(formData.nominee2_contactNumberOffice)
     nominee2_contactNumberMobile.setText(formData.nominee2_contactNumberMobile)
     nominee2_purposeOfNomination.setText(formData.nominee2_purposeOfNomination)
-    return personData
+    console.log('nominee2_annotated', formData.nominee2_name)
   } catch (error) {
   }
 }

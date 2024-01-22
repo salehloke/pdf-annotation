@@ -12,6 +12,8 @@ import { signUniversalCoordinates } from "./signature-utils/sign-universal-coord
 
 // annotate utils
 import { anotateNominee3 } from "./annotate-utils/nominee3-annotate.js";
+import { anotateNominee22 } from "./annotate-utils/nominee2-annotate.js";
+import { anotateNomineeDynamic } from "./annotate-utils/nominee-dynamic-annotate.js";
 import { generatePersonData } from "./annotate-utils/random-generator.js";
 // Folder functions
 import { createFolderIfNotExists } from "./create-folder.js";
@@ -33,12 +35,12 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
     const nominee2 = await generatePersonData()
     const nominee3 = await generatePersonData()
 
-    const formData =  {
+    const formData = {
       
       policyNo: faker.phone.imei(),
       policyOwner: policyOwnerObj.name,
       policyOwnerICNo: policyOwnerObj.IDNumber,
-      isNoChild: policyOwnerObj.isNotHavingChild,
+      isNoChild: policyOwnerObj.isNoChild,
       isSingle: policyOwnerObj.isSingle,
 
       nominee1_name: nominee1.name,
@@ -95,7 +97,7 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
       nominee3_banksName: nominee3.banksName, // 
       nominee3_share: nominee3.share,
       nominee3_mailingAddress: nominee3.mailingAddress,
-      
+
       nominee3_residentialAddress: nominee3.residentialAddress,
       nominee3_contactNumberHome: nominee3.contactNumberHome,
       nominee3_contactNumberOffice: nominee3.contactNumberOffice,
@@ -103,7 +105,7 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
       nominee3_purposeOfNomination: nominee3.purposeOfNomination,
     }
 
-    console.log('formData:', formData)
+    // console.log('formData:', formData)
 
     // page1
     const policyNo = form.getTextField('policyNo')
@@ -114,15 +116,8 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
     const isMuslim = form.getCheckBox('isMuslim')
     const isSingle = form.getCheckBox('isSingle')
     const isNoChild = form.getCheckBox('isNoChild')
+    const isHavingChild = form.getCheckBox('isHavingChild')
     // -----------------
-
-    // page2
-    await anotateNominee1(form, formData)
-    await anotateNominee2(form, formData)
-    await anotateNominee3(form, formData)
-    // 
-    
-    // SET PAGE 1
     policyNo.setText(formData.policyNo)
     policyOwner.setText(formData.policyOwner)
     policyOwnerICNo.setText(formData.policyOwnerICNo)
@@ -133,6 +128,18 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
     } else{
       isNonMuslim.check()
     }
+
+    // page2
+    // await anotateNominee1(form, formData)
+    // await anotateNomineeDynamic(1,form, formData)
+    await anotateNomineeDynamic(1,form, formData)
+    // await anotateNomineeDynamic(3,form, formData)
+    // await anotateNominee22(form, formData)
+    // await anotateNominee3(form, formData)
+
+    // 
+    
+    // SET PAGE 1
 
 
     return form
@@ -193,7 +200,8 @@ export async function anotateNominee1(form,formData) {
     nominee1_contactNumberOffice.setText(formData.nominee1_contactNumberOffice)
     nominee1_contactNumberMobile.setText(formData.nominee1_contactNumberMobile)
     nominee1_purposeOfNomination.setText(formData.nominee1_purposeOfNomination)
-    return personData
+
+    
   } catch (error) {
   }
 }
@@ -247,7 +255,7 @@ export async function anotateNominee2(form,formData) {
     nominee2_contactNumberOffice.setText(formData.nominee2_contactNumberOffice)
     nominee2_contactNumberMobile.setText(formData.nominee2_contactNumberMobile)
     nominee2_purposeOfNomination.setText(formData.nominee2_purposeOfNomination)
-    return personData
+    return formData.nominee2_name
   } catch (error) {
   }
 }

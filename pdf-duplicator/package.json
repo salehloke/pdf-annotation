@@ -17,7 +17,8 @@
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
     "faker": "^6.6.6",
-    "pdf-lib": "^1.17.1"
+    "pdf-lib": "^1.17.1",
+    "winston": "^3.11.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",

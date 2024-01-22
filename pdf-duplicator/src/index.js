@@ -8,6 +8,7 @@ import { signTrustee2 } from "./signature-utils/sign-trustee2.js";
 import { signPolicyHolder } from "./signature-utils/sign-policyholder.js";
 import { signWitness } from "./signature-utils/sign-witness.js";
 import { GLOBAL_CONFIG } from "./signature-config.js";
+import { logFormData } from "./shared/sample-data-logger.js";
 
 // CATEGORY 1
 import { category1_scenario6 } from "./category1-scenario6.js";
@@ -35,7 +36,10 @@ console.log("start");
 
 // 
 // NON-MUSLIM + DIGITAL FORM: APPROVED CASES
-dynamicTestCaseGenerator(1, 38, 100);
+dynamicTestCaseGenerator(1, 38, 1);
 // dynamicTestCaseGenerator(1, 39, 100);
 // dynamicTestCaseGenerator(1, 40, 100);
 // dynamicTestCaseGenerator(1, 41, 100);
+
+await logFormData()
+

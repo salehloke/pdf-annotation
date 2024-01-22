@@ -137,7 +137,7 @@ export const GLOBAL_CONFIG = {
 };
 
 
-const formData = {
+export const dummyFormData = {
   pages: [
     {
       // page 1

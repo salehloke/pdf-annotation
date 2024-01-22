@@ -8,12 +8,12 @@ import { signTrustee2 } from "./signature-utils/sign-trustee2.js";
 import { signPolicyHolder } from "./signature-utils/sign-policyholder.js";
 import { signWitness } from "./signature-utils/sign-witness.js";
 import { signUniversalCoordinates } from "./signature-utils/sign-universal-coordinate.js";
-import { annotateFormPage1 } from "./annotate-form.js";
+import { annotateFormPage1, generateFormData } from "./annotate-form.js";
 
 // Folder functions
 import { createFolderIfNotExists } from "./create-folder.js";
 import { compressFolder } from "./compress-folder.js";
-import { GLOBAL_CONFIG } from "./signature-config.js";
+import { GLOBAL_CONFIG, dummyFormData } from "./signature-config.js";
 
 const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
@@ -56,8 +56,9 @@ export async function dynamicTestCaseGenerator(
     for (let i = 1; i <= count; i++) {
       // Load the existing PDF
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
-
-      annotateFormPage1(pdfDoc, isMuslim);
+      
+      const formData = await generateFormData()
+      await annotateFormPage1(pdfDoc, isMuslim, formData);
 
       // Modify the PDF - for example, add a text annotation to the first page
       const pages = pdfDoc.getPages();
@@ -128,6 +129,7 @@ export async function dynamicTestCaseGenerator(
       const outputPath = `${outputFolder}/${outputFileName}`;
 
       const modifiedPdfBytes = await pdfDoc.save();
+      
       await fs.writeFile(outputPath, modifiedPdfBytes);
       /** end of SAVING FILE SECTION */
     }
@@ -136,3 +138,5 @@ export async function dynamicTestCaseGenerator(
     console.error("Error modifying and saving PDFs:", error);
   }
 }
+
+

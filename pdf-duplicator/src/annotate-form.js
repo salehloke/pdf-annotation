@@ -14,6 +14,8 @@ import { signUniversalCoordinates } from "./signature-utils/sign-universal-coord
 import { anotateNominee3 } from "./annotate-utils/nominee3-annotate.js";
 import { anotateNominee22 } from "./annotate-utils/nominee2-annotate.js";
 import { anotateNomineeDynamic } from "./annotate-utils/nominee-dynamic-annotate.js";
+import { annotateTrustee } from "./annotate-utils/trustee-annotate.js";
+
 import { generatePersonData } from "./annotate-utils/random-generator.js";
 // Folder functions
 import { createFolderIfNotExists } from "./create-folder.js";
@@ -22,8 +24,129 @@ import { GLOBAL_CONFIG } from "./signature-config.js";
 
 const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
+export async function generateFormData(){
 
-export async function annotateFormPage1(pdfDoc, isMuslimForm) {
+  const policyOwnerObj = await generatePersonData()
+  const nominee1 = await generatePersonData()
+  const nominee2 = await generatePersonData()
+  const nominee3 = await generatePersonData()
+  const trustee1 = await generatePersonData()
+  const trustee2 = await generatePersonData()
+  
+  const formData = {
+      
+    policyNo: faker.phone.imei(),
+    policyOwner: policyOwnerObj.name,
+    policyOwnerICNo: policyOwnerObj.IDNumber,
+    isNoChild: policyOwnerObj.isNoChild,
+    isSingle: policyOwnerObj.isSingle,
+
+    nominee1_name: nominee1.name,
+    nominee1_gender: nominee1.gender,
+    nominee1_IDDesc: 'IC',
+    nominee1_IDNumber: nominee1.IDNumber,
+    nominee1_newIcNo: nominee1.IDNumber,
+    nominee1_dateOfBirth: nominee1.dateOfBirth,
+    nominee1_nationality: nominee1.nationality,
+    nominee1_occupation: nominee1.occupation,
+    nominee1_nameOfEmployer: nominee1.nameOfEmployer,
+    nominee1_natureOfBusiness: nominee1.natureOfBusiness,
+    nominee1_relationshipToPolicyOwner: nominee1.relationshipToPolicyOwner,
+    nominee1_banksName: nominee1.banksName, // 
+    nominee1_share: nominee1.share,
+    nominee1_mailingAddress: nominee1.mailingAddress,
+    nominee1_residentialAddress: nominee1.residentialAddress,
+    nominee1_contactNumberHome: nominee1.contactNumberHome,
+    nominee1_contactNumberOffice: nominee1.contactNumberOffice,
+    nominee1_contactNumberMobile: nominee1.contactNumberMobile,
+    nominee1_purposeOfNomination: nominee1.purposeOfNomination,
+
+    nominee2_name: nominee2.name,
+    nominee2_gender: nominee2.gender,
+    nominee2_IDDesc: 'IC',
+    nominee2_IDNumber: nominee2.IDNumber,
+    nominee2_newIcNo: nominee2.IDNumber,
+    nominee2_dateOfBirth: nominee2.dateOfBirth,
+    nominee2_nationality: nominee2.nationality,
+    nominee2_occupation: nominee2.occupation,
+    nominee2_nameOfEmployer: nominee2.nameOfEmployer,
+    nominee2_natureOfBusiness: nominee2.natureOfBusiness,
+    nominee2_relationshipToPolicyOwner: nominee2.relationshipToPolicyOwner,
+    nominee2_banksName: nominee2.banksName, // 
+    nominee2_share: nominee2.share,
+    nominee2_mailingAddress: nominee2.mailingAddress,
+    nominee2_residentialAddress: nominee2.residentialAddress,
+    nominee2_contactNumberHome: nominee2.contactNumberHome,
+    nominee2_contactNumberOffice: nominee2.contactNumberOffice,
+    nominee2_contactNumberMobile: nominee2.contactNumberMobile,
+    nominee2_purposeOfNomination: nominee2.purposeOfNomination,
+
+    nominee3_name: nominee3.name,
+    nominee3_gender: nominee3.gender,
+    nominee3_IDDesc: 'IC',
+    nominee3_IDNumber: nominee3.IDNumber,
+    nominee3_newIcNo: nominee3.IDNumber,
+    nominee3_dateOfBirth: nominee3.dateOfBirth,
+    nominee3_nationality: nominee3.nationality,
+    nominee3_occupation: nominee3.occupation,
+    nominee3_nameOfEmployer: nominee3.nameOfEmployer,
+    nominee3_natureOfBusiness: nominee3.natureOfBusiness,
+    nominee3_relationshipToPolicyOwner: nominee3.relationshipToPolicyOwner,
+    nominee3_banksName: nominee3.banksName, // 
+    nominee3_share: nominee3.share,
+    nominee3_mailingAddress: nominee3.mailingAddress,
+
+    nominee3_residentialAddress: nominee3.residentialAddress,
+    nominee3_contactNumberHome: nominee3.contactNumberHome,
+    nominee3_contactNumberOffice: nominee3.contactNumberOffice,
+    nominee3_contactNumberMobile: nominee3.contactNumberMobile,
+    nominee3_purposeOfNomination: nominee3.purposeOfNomination,
+
+
+    trustee1_name: trustee1.name,
+    trustee1_gender: trustee1.gender,
+    trustee1_IDDesc: 'IC',
+    trustee1_IDNumber: trustee1.IDNumber,
+    trustee1_newIcNo: trustee1.IDNumber,
+    trustee1_dateOfBirth: trustee1.dateOfBirth,
+    trustee1_nationality: trustee1.nationality,
+    trustee1_occupation: trustee1.occupation,
+    trustee1_nameOfEmployer: trustee1.nameOfEmployer,
+    trustee1_natureOfBusiness: trustee1.natureOfBusiness,
+    trustee1_relationshipToPolicyOwner: trustee1.relationshipToPolicyOwner,
+    trustee1_banksName: trustee1.banksName, // 
+    trustee1_share: trustee1.share,
+    trustee1_mailingAddress: trustee1.mailingAddress,
+    trustee1_residentialAddress: trustee1.residentialAddress,
+    trustee1_contactNumberHome: trustee1.contactNumberHome,
+    trustee1_contactNumberOffice: trustee1.contactNumberOffice,
+    trustee1_contactNumberMobile: trustee1.contactNumberMobile,
+    trustee1_purposeOfNomination: trustee1.purposeOfNomination,
+
+    trustee2_name: trustee2.name,
+    trustee2_gender: trustee2.gender,
+    trustee2_IDDesc: 'IC',
+    trustee2_IDNumber: trustee2.IDNumber,
+    trustee2_newIcNo: trustee2.IDNumber,
+    trustee2_dateOfBirth: trustee2.dateOfBirth,
+    trustee2_nationality: trustee2.nationality,
+    trustee2_occupation: trustee2.occupation,
+    trustee2_nameOfEmployer: trustee2.nameOfEmployer,
+    trustee2_natureOfBusiness: trustee2.natureOfBusiness,
+    trustee2_relationshipToPolicyOwner: trustee2.relationshipToPolicyOwner,
+    trustee2_banksName: trustee2.banksName, // 
+    trustee2_share: trustee2.share,
+    trustee2_mailingAddress: trustee2.mailingAddress,
+    trustee2_residentialAddress: trustee2.residentialAddress,
+    trustee2_contactNumberHome: trustee2.contactNumberHome,
+    trustee2_contactNumberOffice: trustee2.contactNumberOffice,
+    trustee2_contactNumberMobile: trustee2.contactNumberMobile,
+    trustee2_purposeOfNomination: trustee2.purposeOfNomination,
+  }
+  return formData
+}
+
+export async function annotateFormPage1(pdfDoc, isMuslimForm, formData) {
   try {
     // Load the existing PDF
     // const pdfDoc = await PDFDocument.load(existingPdfBytes);
@@ -34,76 +157,119 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
     const nominee1 = await generatePersonData()
     const nominee2 = await generatePersonData()
     const nominee3 = await generatePersonData()
+    const trustee1 = await generatePersonData()
+    const trustee2 = await generatePersonData()
 
-    const formData = {
+    // const formData = {
       
-      policyNo: faker.phone.imei(),
-      policyOwner: policyOwnerObj.name,
-      policyOwnerICNo: policyOwnerObj.IDNumber,
-      isNoChild: policyOwnerObj.isNoChild,
-      isSingle: policyOwnerObj.isSingle,
+    //   policyNo: faker.phone.imei(),
+    //   policyOwner: policyOwnerObj.name,
+    //   policyOwnerICNo: policyOwnerObj.IDNumber,
+    //   isNoChild: policyOwnerObj.isNoChild,
+    //   isSingle: policyOwnerObj.isSingle,
 
-      nominee1_name: nominee1.name,
-      nominee1_gender: nominee1.gender,
-      nominee1_IDDesc: 'IC',
-      nominee1_IDNumber: nominee1.IDNumber,
-      nominee1_newIcNo: nominee1.IDNumber,
-      nominee1_dateOfBirth: nominee1.dateOfBirth,
-      nominee1_nationality: nominee1.nationality,
-      nominee1_occupation: nominee1.occupation,
-      nominee1_nameOfEmployer: nominee1.nameOfEmployer,
-      nominee1_natureOfBusiness: nominee1.natureOfBusiness,
-      nominee1_relationshipToPolicyOwner: nominee1.relationshipToPolicyOwner,
-      nominee1_banksName: nominee1.banksName, // 
-      nominee1_share: nominee1.share,
-      nominee1_mailingAddress: nominee1.mailingAddress,
-      nominee1_residentialAddress: nominee1.residentialAddress,
-      nominee1_contactNumberHome: nominee1.contactNumberHome,
-      nominee1_contactNumberOffice: nominee1.contactNumberOffice,
-      nominee1_contactNumberMobile: nominee1.contactNumberMobile,
-      nominee1_purposeOfNomination: nominee1.purposeOfNomination,
+    //   nominee1_name: nominee1.name,
+    //   nominee1_gender: nominee1.gender,
+    //   nominee1_IDDesc: 'IC',
+    //   nominee1_IDNumber: nominee1.IDNumber,
+    //   nominee1_newIcNo: nominee1.IDNumber,
+    //   nominee1_dateOfBirth: nominee1.dateOfBirth,
+    //   nominee1_nationality: nominee1.nationality,
+    //   nominee1_occupation: nominee1.occupation,
+    //   nominee1_nameOfEmployer: nominee1.nameOfEmployer,
+    //   nominee1_natureOfBusiness: nominee1.natureOfBusiness,
+    //   nominee1_relationshipToPolicyOwner: nominee1.relationshipToPolicyOwner,
+    //   nominee1_banksName: nominee1.banksName, // 
+    //   nominee1_share: nominee1.share,
+    //   nominee1_mailingAddress: nominee1.mailingAddress,
+    //   nominee1_residentialAddress: nominee1.residentialAddress,
+    //   nominee1_contactNumberHome: nominee1.contactNumberHome,
+    //   nominee1_contactNumberOffice: nominee1.contactNumberOffice,
+    //   nominee1_contactNumberMobile: nominee1.contactNumberMobile,
+    //   nominee1_purposeOfNomination: nominee1.purposeOfNomination,
 
-      nominee2_name: nominee2.name,
-      nominee2_gender: nominee2.gender,
-      nominee2_IDDesc: 'IC',
-      nominee2_IDNumber: nominee2.IDNumber,
-      nominee2_newIcNo: nominee2.IDNumber,
-      nominee2_dateOfBirth: nominee2.dateOfBirth,
-      nominee2_nationality: nominee2.nationality,
-      nominee2_occupation: nominee2.occupation,
-      nominee2_nameOfEmployer: nominee2.nameOfEmployer,
-      nominee2_natureOfBusiness: nominee2.natureOfBusiness,
-      nominee2_relationshipToPolicyOwner: nominee2.relationshipToPolicyOwner,
-      nominee2_banksName: nominee2.banksName, // 
-      nominee2_share: nominee2.share,
-      nominee2_mailingAddress: nominee2.mailingAddress,
-      nominee2_residentialAddress: nominee2.residentialAddress,
-      nominee2_contactNumberHome: nominee2.contactNumberHome,
-      nominee2_contactNumberOffice: nominee2.contactNumberOffice,
-      nominee2_contactNumberMobile: nominee2.contactNumberMobile,
-      nominee2_purposeOfNomination: nominee2.purposeOfNomination,
+    //   nominee2_name: nominee2.name,
+    //   nominee2_gender: nominee2.gender,
+    //   nominee2_IDDesc: 'IC',
+    //   nominee2_IDNumber: nominee2.IDNumber,
+    //   nominee2_newIcNo: nominee2.IDNumber,
+    //   nominee2_dateOfBirth: nominee2.dateOfBirth,
+    //   nominee2_nationality: nominee2.nationality,
+    //   nominee2_occupation: nominee2.occupation,
+    //   nominee2_nameOfEmployer: nominee2.nameOfEmployer,
+    //   nominee2_natureOfBusiness: nominee2.natureOfBusiness,
+    //   nominee2_relationshipToPolicyOwner: nominee2.relationshipToPolicyOwner,
+    //   nominee2_banksName: nominee2.banksName, // 
+    //   nominee2_share: nominee2.share,
+    //   nominee2_mailingAddress: nominee2.mailingAddress,
+    //   nominee2_residentialAddress: nominee2.residentialAddress,
+    //   nominee2_contactNumberHome: nominee2.contactNumberHome,
+    //   nominee2_contactNumberOffice: nominee2.contactNumberOffice,
+    //   nominee2_contactNumberMobile: nominee2.contactNumberMobile,
+    //   nominee2_purposeOfNomination: nominee2.purposeOfNomination,
 
-      nominee3_name: nominee3.name,
-      nominee3_gender: nominee3.gender,
-      nominee3_IDDesc: 'IC',
-      nominee3_IDNumber: nominee3.IDNumber,
-      nominee3_newIcNo: nominee3.IDNumber,
-      nominee3_dateOfBirth: nominee3.dateOfBirth,
-      nominee3_nationality: nominee3.nationality,
-      nominee3_occupation: nominee3.occupation,
-      nominee3_nameOfEmployer: nominee3.nameOfEmployer,
-      nominee3_natureOfBusiness: nominee3.natureOfBusiness,
-      nominee3_relationshipToPolicyOwner: nominee3.relationshipToPolicyOwner,
-      nominee3_banksName: nominee3.banksName, // 
-      nominee3_share: nominee3.share,
-      nominee3_mailingAddress: nominee3.mailingAddress,
+    //   nominee3_name: nominee3.name,
+    //   nominee3_gender: nominee3.gender,
+    //   nominee3_IDDesc: 'IC',
+    //   nominee3_IDNumber: nominee3.IDNumber,
+    //   nominee3_newIcNo: nominee3.IDNumber,
+    //   nominee3_dateOfBirth: nominee3.dateOfBirth,
+    //   nominee3_nationality: nominee3.nationality,
+    //   nominee3_occupation: nominee3.occupation,
+    //   nominee3_nameOfEmployer: nominee3.nameOfEmployer,
+    //   nominee3_natureOfBusiness: nominee3.natureOfBusiness,
+    //   nominee3_relationshipToPolicyOwner: nominee3.relationshipToPolicyOwner,
+    //   nominee3_banksName: nominee3.banksName, // 
+    //   nominee3_share: nominee3.share,
+    //   nominee3_mailingAddress: nominee3.mailingAddress,
 
-      nominee3_residentialAddress: nominee3.residentialAddress,
-      nominee3_contactNumberHome: nominee3.contactNumberHome,
-      nominee3_contactNumberOffice: nominee3.contactNumberOffice,
-      nominee3_contactNumberMobile: nominee3.contactNumberMobile,
-      nominee3_purposeOfNomination: nominee3.purposeOfNomination,
-    }
+    //   nominee3_residentialAddress: nominee3.residentialAddress,
+    //   nominee3_contactNumberHome: nominee3.contactNumberHome,
+    //   nominee3_contactNumberOffice: nominee3.contactNumberOffice,
+    //   nominee3_contactNumberMobile: nominee3.contactNumberMobile,
+    //   nominee3_purposeOfNomination: nominee3.purposeOfNomination,
+
+
+    //   trustee1_name: trustee1.name,
+    //   trustee1_gender: trustee1.gender,
+    //   trustee1_IDDesc: 'IC',
+    //   trustee1_IDNumber: trustee1.IDNumber,
+    //   trustee1_newIcNo: trustee1.IDNumber,
+    //   trustee1_dateOfBirth: trustee1.dateOfBirth,
+    //   trustee1_nationality: trustee1.nationality,
+    //   trustee1_occupation: trustee1.occupation,
+    //   trustee1_nameOfEmployer: trustee1.nameOfEmployer,
+    //   trustee1_natureOfBusiness: trustee1.natureOfBusiness,
+    //   trustee1_relationshipToPolicyOwner: trustee1.relationshipToPolicyOwner,
+    //   trustee1_banksName: trustee1.banksName, // 
+    //   trustee1_share: trustee1.share,
+    //   trustee1_mailingAddress: trustee1.mailingAddress,
+    //   trustee1_residentialAddress: trustee1.residentialAddress,
+    //   trustee1_contactNumberHome: trustee1.contactNumberHome,
+    //   trustee1_contactNumberOffice: trustee1.contactNumberOffice,
+    //   trustee1_contactNumberMobile: trustee1.contactNumberMobile,
+    //   trustee1_purposeOfNomination: trustee1.purposeOfNomination,
+
+    //   trustee2_name: trustee2.name,
+    //   trustee2_gender: trustee2.gender,
+    //   trustee2_IDDesc: 'IC',
+    //   trustee2_IDNumber: trustee2.IDNumber,
+    //   trustee2_newIcNo: trustee2.IDNumber,
+    //   trustee2_dateOfBirth: trustee2.dateOfBirth,
+    //   trustee2_nationality: trustee2.nationality,
+    //   trustee2_occupation: trustee2.occupation,
+    //   trustee2_nameOfEmployer: trustee2.nameOfEmployer,
+    //   trustee2_natureOfBusiness: trustee2.natureOfBusiness,
+    //   trustee2_relationshipToPolicyOwner: trustee2.relationshipToPolicyOwner,
+    //   trustee2_banksName: trustee2.banksName, // 
+    //   trustee2_share: trustee2.share,
+    //   trustee2_mailingAddress: trustee2.mailingAddress,
+    //   trustee2_residentialAddress: trustee2.residentialAddress,
+    //   trustee2_contactNumberHome: trustee2.contactNumberHome,
+    //   trustee2_contactNumberOffice: trustee2.contactNumberOffice,
+    //   trustee2_contactNumberMobile: trustee2.contactNumberMobile,
+    //   trustee2_purposeOfNomination: trustee2.purposeOfNomination,
+    // }
 
     // console.log('formData:', formData)
 
@@ -133,6 +299,55 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
     // await anotateNominee1(form, formData)
     // await anotateNomineeDynamic(1,form, formData)
     await anotateNomineeDynamic(1,form, formData)
+    await anotateNomineeDynamic(2,form, formData)
+    await anotateNomineeDynamic(3,form, formData)
+    const trusteesNumber = [1,2]
+     /** TRUSTEE 1 */
+     trusteesNumber.forEach(numberOfTrustee => {
+       const trustee1_name = form.getTextField(`trustee${numberOfTrustee}_name`)
+       trustee1_name.enableMultiline()
+       const trustee1_gender = form.getTextField(`trustee${numberOfTrustee}_gender`)
+       const trustee1_IDDesc = form.getTextField(`trustee${numberOfTrustee}_idDescription`)
+       const trustee1_IDNumber = form.getTextField(`trustee${numberOfTrustee}_idNumber`)
+       const trustee1_newIcNo = form.getTextField(`trustee${numberOfTrustee}_newIcNumber`)
+       const trustee1_dateOfBirth = form.getTextField(`trustee${numberOfTrustee}_dateOfBirth`)
+       const trustee1_nationality = form.getTextField(`trustee${numberOfTrustee}_nationality`)
+       const trustee1_occupation = form.getTextField(`trustee${numberOfTrustee}_occupation`)
+       const trustee1_nameOfEmployer = form.getTextField(`trustee${numberOfTrustee}_nameOfEmployer`)
+       const trustee1_natureOfBusiness = form.getTextField(`trustee${numberOfTrustee}_natureOfBusiness`)
+       const trustee1_banksName = form.getTextField(`trustee${numberOfTrustee}_banksName`)
+       const trustee1_savingsAccountNumber = form.getTextField(`trustee${numberOfTrustee}_savingsAccountNumber`)
+       const trustee1_mailingAddress = form.getTextField(`trustee${numberOfTrustee}_mailingAddress`)
+       const trustee1_residentialAddress = form.getTextField(`trustee${numberOfTrustee}_residentialAddress`)
+       const trustee1_contactNumberHome = form.getTextField(`trustee${numberOfTrustee}_contactNumberHome`)
+       const trustee1_contactNumberOffice = form.getTextField(`trustee${numberOfTrustee}_contactNumberOffice`)
+       const trustee1_contactNumberMobile = form.getTextField(`trustee${numberOfTrustee}_contactNumberMobile`)
+       const trustee1_reasonForAppointmentOfTrustee = form.getTextField(`trustee${numberOfTrustee}_reasonForAppointmentOfTrustee`)
+       trustee1_name.setText(formData[`trustee${numberOfTrustee}_name`])
+       trustee1_gender.setText(formData[`trustee${numberOfTrustee}_gender`])
+       trustee1_IDDesc.setText(formData[`trustee${numberOfTrustee}_idDescription`])
+       trustee1_IDNumber.setText(formData[`trustee${numberOfTrustee}_idNumber`])
+       trustee1_newIcNo.setText(formData[`trustee${numberOfTrustee}_newIcNumber`])
+       trustee1_dateOfBirth.setText(formData[`trustee${numberOfTrustee}_dateOfBirth`])
+       trustee1_nationality.setText(formData[`trustee${numberOfTrustee}_nationality`])
+       trustee1_occupation.setText(formData[`trustee${numberOfTrustee}_occupation`])
+       trustee1_nameOfEmployer.setText(formData[`trustee${numberOfTrustee}_nameOfEmployer`])
+       trustee1_natureOfBusiness.setText(formData[`trustee${numberOfTrustee}_natureOfBusiness`])
+       trustee1_banksName.setText(formData[`trustee${numberOfTrustee}_banksName`])
+       trustee1_savingsAccountNumber.setText(formData[`trustee${numberOfTrustee}_savingsAccountNumber`])
+       trustee1_mailingAddress.setText(formData[`trustee${numberOfTrustee}_mailingAddress`])
+       trustee1_residentialAddress.setText(formData[`trustee${numberOfTrustee}_residentialAddress`])
+       trustee1_contactNumberHome.setText(formData[`trustee${numberOfTrustee}_contactNumberHome`])
+       trustee1_contactNumberOffice.setText(formData[`trustee${numberOfTrustee}_contactNumberOffice`])
+       trustee1_contactNumberMobile.setText(formData[`trustee${numberOfTrustee}_contactNumberMobile`])
+       trustee1_reasonForAppointmentOfTrustee.setText(formData[`trustee${numberOfTrustee}_reasonForAppointmentOfTrustee`])
+      });
+      /**end of TRUSTEE  */
+
+    // await annotateTrustee(1,form, formData)
+    // await annotateTrustee(2,form, formData)
+    
+
     // await anotateNomineeDynamic(3,form, formData)
     // await anotateNominee22(form, formData)
     // await anotateNominee3(form, formData)
@@ -259,3 +474,5 @@ export async function anotateNominee2(form,formData) {
   } catch (error) {
   }
 }
+
+

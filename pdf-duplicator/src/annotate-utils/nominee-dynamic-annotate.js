@@ -20,8 +20,8 @@ const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
 export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
   try {
-    console.log(`nominee${numberOfNominee}`)
-    console.log(`nominee${numberOfNominee}_annotated`, formData[`nominee${numberOfNominee}_name`])
+    // console.log(`nominee${numberOfNominee}`)
+    // console.log(`nominee${numberOfNominee}_annotated`, formData[`nominee${numberOfNominee}_name`])
     // page2
     /** NOMINEE 1 */
     const nominee_name = form.getTextField(`nominee${numberOfNominee}_name`)
@@ -37,6 +37,7 @@ export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
     const nominee_natureOfBusiness = form.getTextField(`nominee${numberOfNominee}_natureOfBusiness`)
     const nominee_relationshipToPolicyOwner = form.getTextField(`nominee${numberOfNominee}_relationshipToPolicyOwner`)
     const nominee_banksName = form.getTextField(`nominee${numberOfNominee}_banksName`)
+    const nominee_savingsAccountNumber = form.getTextField(`nominee${numberOfNominee}_savingsAccountNumber`)
     const nominee_mailingAddress = form.getTextField(`nominee${numberOfNominee}_mailingAddress`)
     const nominee_residentialAddress = form.getTextField(`nominee${numberOfNominee}_residentialAddress`)
     const nominee_contactNumberHome = form.getTextField(`nominee${numberOfNominee}_contactNumberHome`)
@@ -59,6 +60,7 @@ export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
     nominee_natureOfBusiness.setText(formData[`nominee${numberOfNominee}_natureOfBusiness`])
     nominee_relationshipToPolicyOwner.setText(formData[`nominee${numberOfNominee}_relationshipToPolicyOwner`])
     nominee_banksName.setText(formData[`nominee${numberOfNominee}_banksName`])
+    nominee_savingsAccountNumber.setText(formData[`nominee${numberOfNominee}_savingsAccountNumber`])
     nominee_share.setText(formData[`nominee${numberOfNominee}_share`])
     nominee_mailingAddress.setText(formData[`nominee${numberOfNominee}_mailingAddress`])
     nominee_residentialAddress.setText(formData[`nominee${numberOfNominee}_residentialAddress`])

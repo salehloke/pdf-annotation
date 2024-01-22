@@ -3,23 +3,18 @@ import { promises as fs } from "fs";
 import { faker } from '@faker-js/faker';
 
 // page functions
-import { rotatePage } from "./rotate-page.js";
-import { signTrustee1 } from "./signature-utils/sign-trustee1.js";
-import { signTrustee2 } from "./signature-utils/sign-trustee2.js";
-import { signPolicyHolder } from "./signature-utils/sign-policyholder.js";
-import { signWitness } from "./signature-utils/sign-witness.js";
-import { signUniversalCoordinates } from "./signature-utils/sign-universal-coordinate.js";
+import { signTrustee1 } from "./shared/signature-utils/sign-trustee1.js";
+import { signTrustee2 } from "./shared/signature-utils/sign-trustee2.js";
+import { signPolicyHolder } from "./shared/signature-utils/sign-policyholder.js";
+import { signWitness } from "./shared/signature-utils/sign-witness.js";
+import { signUniversalCoordinates } from "./shared/signature-utils/sign-universal-coordinate.js";
 
 // annotate utils
-import { anotateNominee3 } from "./annotate-utils/nominee3-annotate.js";
-import { anotateNominee22 } from "./annotate-utils/nominee2-annotate.js";
-import { anotateNomineeDynamic } from "./annotate-utils/nominee-dynamic-annotate.js";
-import { annotateTrustee } from "./annotate-utils/trustee-annotate.js";
+import { anotateNomineeDynamic } from "./shared/annotate-utils/nominee-dynamic-annotate.js";
+import { annotateTrustee } from "./shared/annotate-utils/trustee-annotate.js";
 
-import { generatePersonData } from "./annotate-utils/random-generator.js";
+import { generatePersonData } from "./shared/annotate-utils/random-generator.js";
 // Folder functions
-import { createFolderIfNotExists } from "./create-folder.js";
-import { compressFolder } from "./compress-folder.js";
 import { GLOBAL_CONFIG } from "./signature-config.js";
 
 const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;

@@ -3,17 +3,14 @@ import { promises as fs } from "fs";
 import { faker } from '@faker-js/faker';
 
 // page functions
-import { rotatePage } from "../rotate-page.js";
-import { signTrustee1 } from "../signature-utils/sign-trustee1.js";
-import { signTrustee2 } from "../signature-utils/sign-trustee2.js";
-import { signPolicyHolder } from "../signature-utils/sign-policyholder.js";
-import { signWitness } from "../signature-utils/sign-witness.js";
-import { signUniversalCoordinates } from "../signature-utils/sign-universal-coordinate.js";
+import { signTrustee1 } from "../shared/signature-utils/sign-trustee1.js";
+import { signTrustee2 } from "../shared/signature-utils/sign-trustee2.js";
+import { signPolicyHolder } from "../shared/signature-utils/sign-policyholder.js";
+import { signWitness } from "../shared/signature-utils/sign-witness.js";
+import { signUniversalCoordinates } from "../shared/signature-utils/sign-universal-coordinate.js";
 
 // Folder functions
-import { createFolderIfNotExists } from "../create-folder.js";
-import { compressFolder } from "../compress-folder.js";
-import { GLOBAL_CONFIG } from "../signature-config.js";
+import { GLOBAL_CONFIG } from "../../signature-config";
 
 const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 

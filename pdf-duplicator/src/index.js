@@ -2,19 +2,17 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { promises as fs } from "fs";
 
 // reusable functions
-import { rotatePage } from "./rotate-page.js";
-import { signTrustee1 } from "./signature-utils/sign-trustee1.js";
-import { signTrustee2 } from "./signature-utils/sign-trustee2.js";
-import { signPolicyHolder } from "./signature-utils/sign-policyholder.js";
-import { signWitness } from "./signature-utils/sign-witness.js";
+import { rotatePage } from "./shared/annotate-utils/rotate-page.js";
+import { signTrustee1 } from "./shared/signature-utils/sign-trustee1.js";
+import { signTrustee2 } from "./shared/signature-utils/sign-trustee2.js";
+import { signPolicyHolder } from "./shared/signature-utils/sign-policyholder.js";
+import { signWitness } from "./shared/signature-utils/sign-witness.js";
 import { GLOBAL_CONFIG } from "./signature-config.js";
-import { logFormData } from "./shared/sample-data-logger.js";
+import { logFormData } from "./shared/logger/sample-data-logger.js";
 
-// CATEGORY 1
-import { category1_scenario6 } from "./category1-scenario6.js";
-import { category1_scenario7 } from "./category1-scenario7.js";
 
 // CATEGORY 3
+// import { dynamicTestCaseGenerator } from "./dynamic-generator.js";
 import { dynamicTestCaseGenerator } from "./dynamic-generator.js";
 
 const formType1 = GLOBAL_CONFIG.NON_MUSLIM_NOMINATION_WITH_DATA;

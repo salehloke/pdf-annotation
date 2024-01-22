@@ -1,21 +1,9 @@
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { promises as fs } from "fs";
 
-// page functions
-import { rotatePage } from "../rotate-page.js";
-import { signTrustee1 } from "../signature-utils/sign-trustee1.js";
-import { signTrustee2 } from "../signature-utils/sign-trustee2.js";
-import { signPolicyHolder } from "../signature-utils/sign-policyholder.js";
-import { signWitness } from "../signature-utils/sign-witness.js";
-import { signUniversalCoordinates } from "../signature-utils/sign-universal-coordinate.js";
 
 // Folder functions
-import { createFolderIfNotExists } from "../create-folder.js";
-import { compressFolder } from "../compress-folder.js";
-import { GLOBAL_CONFIG } from "../signature-config.js";
-
-const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
-
+// import { GLOBAL_CONFIG } from "../../signature-config";
 
 
 export async function anotateNomineeDynamic(numberOfNominee,form,formData) {

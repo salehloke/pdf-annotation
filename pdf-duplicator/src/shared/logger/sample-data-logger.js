@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from 'winston';
-import { dummyFormData } from '../signature-config.js';
+import { dummyFormData } from '../../signature-config.js';
 
 export async function logFormData() {
     // Log to the console

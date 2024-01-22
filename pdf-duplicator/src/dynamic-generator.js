@@ -83,7 +83,7 @@ export async function dynamicTestCaseGenerator(
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
         await signTrustee1(signaturePage, imagePath, pdfDoc);
-        console.log("imagePath trustee1", imagePath);
+        // console.log("imagePath trustee1", imagePath);
       }
 
       if (isSignatureOfTrustee2) {
@@ -91,7 +91,7 @@ export async function dynamicTestCaseGenerator(
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
         await signTrustee2(signaturePage, imagePath, pdfDoc);
-        console.log("imagePath trustee2", imagePath);
+        // console.log("imagePath trustee2", imagePath);
       }
 
       if (isSignatureOfWitness) {
@@ -99,7 +99,7 @@ export async function dynamicTestCaseGenerator(
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
         await signWitness(signaturePage, imagePath, pdfDoc);
-        console.log("imagePath witness", imagePath);
+        // console.log("imagePath witness", imagePath);
       }
 
       if (isSignatureOfPolicyHolder) {
@@ -107,7 +107,7 @@ export async function dynamicTestCaseGenerator(
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
         await signPolicyHolder(signaturePage, imagePath, pdfDoc);
-        console.log("imagePath policyholder", imagePath);
+        // console.log("imagePath policyholder", imagePath);
       }
       /** end of signature section */
 

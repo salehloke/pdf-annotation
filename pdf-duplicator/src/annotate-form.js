@@ -34,6 +34,7 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
     const nominee3 = await generatePersonData()
 
     const formData =  {
+      
       policyNo: faker.phone.imei(),
       policyOwner: policyOwnerObj.name,
       policyOwnerICNo: policyOwnerObj.IDNumber,
@@ -94,6 +95,7 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
       nominee3_banksName: nominee3.banksName, // 
       nominee3_share: nominee3.share,
       nominee3_mailingAddress: nominee3.mailingAddress,
+      
       nominee3_residentialAddress: nominee3.residentialAddress,
       nominee3_contactNumberHome: nominee3.contactNumberHome,
       nominee3_contactNumberOffice: nominee3.contactNumberOffice,
@@ -101,7 +103,7 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm) {
       nominee3_purposeOfNomination: nominee3.purposeOfNomination,
     }
 
-    // console.log('formData:', formData)
+    console.log('formData:', formData)
 
     // page1
     const policyNo = form.getTextField('policyNo')

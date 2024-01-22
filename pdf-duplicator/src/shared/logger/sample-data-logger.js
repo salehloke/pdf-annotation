@@ -1,13 +1,19 @@
 import { createLogger, format, transports } from 'winston';
 import { dummyFormData } from '../../signature-config.js';
+const { combine, timestamp, label, prettyPrint } = format;
 
 export async function logFormData() {
     // Log to the console
   
     // Configure Winston
     const logger = createLogger({
-      level: 'info',
-      format: format.simple(),
+      // level: 'info',
+      // format: format.simple(),
+      format: format.combine(
+        label({ label: 'right meow!' }),
+        timestamp(),
+        prettyPrint()
+      ),
       transports: [
         new transports.Console(),
         new transports.File({ filename: `sampleData.json` })

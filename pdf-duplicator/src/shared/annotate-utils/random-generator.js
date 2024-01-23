@@ -46,11 +46,12 @@ export async function generatePersonData(isMuslim) {
     const isMale = faker.datatype.boolean()
     let fullName = await nameGenerator(isMale, isMuslim)
     
+    
 
 
     const yearRandom = faker.number.int({max:2000, min:1957})
     const yearIDStr = `${yearRandom}`
-    const yearID = yearIDStr.slice(1,3)
+    const yearID = yearIDStr.slice(2,4)
     const monthRandom = faker.number.int({max:12, min:1})
     const monthID = monthRandom <10 ? '0'+monthRandom : monthRandom
     const dayRandom = faker.number.int({max:28, min:1})
@@ -96,14 +97,14 @@ export async function generatePersonData(isMuslim) {
   }
 }
 
-export async function generateFormData(){
+export async function generateFormData(isMuslim){
 
-  const policyOwnerObj = await generatePersonData()
-  const nominee1 = await generatePersonData()
-  const nominee2 = await generatePersonData()
-  const nominee3 = await generatePersonData()
-  const trustee1 = await generatePersonData()
-  const trustee2 = await generatePersonData()
+  const policyOwnerObj = await generatePersonData(isMuslim)
+  const nominee1 = await generatePersonData(isMuslim)
+  const nominee2 = await generatePersonData(isMuslim)
+  const nominee3 = await generatePersonData(isMuslim)
+  const trustee1 = await generatePersonData(isMuslim)
+  const trustee2 = await generatePersonData(isMuslim)
   
   const formData = {
       

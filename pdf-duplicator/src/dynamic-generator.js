@@ -59,7 +59,7 @@ export async function dynamicTestCaseGenerator(
       // Load the existing PDF
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
       
-      const formData = await generateFormData()
+      const formData = await generateFormData(isMuslim)
       await annotateForm(pdfDoc, isMuslim, formData);
 
       // Modify the PDF - for example, add a text annotation to the first page

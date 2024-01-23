@@ -12,12 +12,10 @@ import { signUniversalCoordinates } from "./shared/signature-utils/sign-universa
 // annotate utils
 import { anotateNomineeDynamic } from "./shared/annotate-utils/nominee-dynamic-annotate.js";
 import { annotateTrustee } from "./shared/annotate-utils/trustee-annotate.js";
-
+import { signaturePageAnnotate } from "./shared/annotate-utils/signature-page-annotate.js";
 import { generatePersonData } from "./shared/annotate-utils/random-generator.js";
 // Folder functions
 import { GLOBAL_CONFIG } from "./signature-config.js";
-
-const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
 export async function generateFormData(){
 
@@ -171,8 +169,8 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm, formData) {
 
     // page2
     const numberOfNominee = 1
-    const nominee_mailingAddress = form.getTextField(`nominee${numberOfNominee}_mailingAddress`)
-    nominee_mailingAddress.setText(formData[`nominee${numberOfNominee}_mailingAddress`])
+    // const nominee_mailingAddress = form.getTextField(`nominee${numberOfNominee}_mailingAddress`)
+    // nominee_mailingAddress.setText(formData[`nominee${numberOfNominee}_mailingAddress`])
 
     // await anotateNominee1(form, formData)
     // await anotateNomineeDynamic(1,form, formData)
@@ -196,116 +194,5 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm, formData) {
   }
 }
 
-
-
-
-export async function anotateNominee1(form,formData) {
-  try {
-    console.log('annotate nominee1')
-    const nominee1 = await generatePersonData()
- 
-    // page2
-    /** NOMINEE 1 */
-    const nominee1_name = form.getTextField('nominee1_name')
-    nominee1_name.enableMultiline()
-    const nominee1_gender = form.getTextField('nominee1_gender')
-    const nominee1_IDDesc = form.getTextField('nominee1_IDDesc')
-    const nominee1_IDNumber = form.getTextField('nominee1_IDNumber')
-    const nominee1_newIcNo = form.getTextField('nominee1_newIcNo')
-    const nominee1_dateOfBirth = form.getTextField('nominee1_dateOfBirth')
-    const nominee1_nationality = form.getTextField('nominee1_nationality')
-    const nominee1_occupation = form.getTextField('nominee1_occupation')
-    const nominee1_nameOfEmployer = form.getTextField('nominee1_nameOfEmployer')
-    const nominee1_natureOfBusiness = form.getTextField('nominee1_natureOfBusiness')
-    const nominee1_relationshipToPolicyOwner = form.getTextField('nominee1_relationshipToPolicyOwner')
-    const nominee1_banksName = form.getTextField('nominee1_banksName')
-    const nominee1_mailingAddress = form.getTextField('nominee1_mailingAddress')
-    const nominee1_residentialAddress = form.getTextField('nominee1_residentialAddress')
-    const nominee1_contactNumberHome = form.getTextField('nominee1_contactNumberHome')
-    const nominee1_contactNumberOffice = form.getTextField('nominee1_contactNumberOffice')
-    const nominee1_contactNumberMobile = form.getTextField('nominee1_contactNumberMobile')
-    const nominee1_purposeOfNomination = form.getTextField('nominee1_purposeOfNomination')
-
-    // ----------------
-
-
-    nominee1_name.setText(formData.nominee1_name)
-    nominee1_gender.setText(formData.nominee1_gender)
-    nominee1_IDDesc.setText(formData.nominee1_IDDesc)
-    nominee1_IDNumber.setText(formData.nominee1_IDNumber)
-    nominee1_newIcNo.setText(formData.nominee1_newIcNo)
-    nominee1_dateOfBirth.setText(formData.nominee1_dateOfBirth)
-    nominee1_nationality.setText(formData.nominee1_nationality)
-    nominee1_occupation.setText(formData.nominee1_occupation)
-    nominee1_nameOfEmployer.setText(formData.nominee1_nameOfEmployer)
-    nominee1_natureOfBusiness.setText(formData.nominee1_natureOfBusiness)
-    nominee1_relationshipToPolicyOwner.setText(formData.nominee1_relationshipToPolicyOwner)
-    nominee1_banksName.setText(formData.nominee1_banksName)
-    nominee1_share.setText(formData.nominee1_share)
-    nominee1_mailingAddress.setText(formData.nominee1_mailingAddress)
-    nominee1_residentialAddress.setText(formData.nominee1_residentialAddress)
-    nominee1_contactNumberHome.setText(formData.nominee1_contactNumberHome)
-    nominee1_contactNumberOffice.setText(formData.nominee1_contactNumberOffice)
-    nominee1_contactNumberMobile.setText(formData.nominee1_contactNumberMobile)
-    nominee1_purposeOfNomination.setText(formData.nominee1_purposeOfNomination)
-
-    
-  } catch (error) {
-  }
-}
-
-
-
-export async function anotateNominee2(form,formData) {
-  try {
- 
-    // page2
-    /** NOMINEE 1 */
-    const nominee2_name = form.getTextField('nominee2_name')
-    nominee2_name.enableMultiline()
-    const nominee2_gender = form.getTextField('nominee2_gender')
-    const nominee2_IDDesc = form.getTextField('nominee2_IDDesc')
-    const nominee2_IDNumber = form.getTextField('nominee2_IDNumber')
-    const nominee2_newIcNo = form.getTextField('nominee2_newIcNo')
-    const nominee2_dateOfBirth = form.getTextField('nominee2_dateOfBirth')
-    const nominee2_nationality = form.getTextField('nominee2_nationality')
-    const nominee2_occupation = form.getTextField('nominee2_occupation')
-    const nominee2_nameOfEmployer = form.getTextField('nominee2_nameOfEmployer')
-    const nominee2_natureOfBusiness = form.getTextField('nominee2_natureOfBusiness')
-    const nominee2_relationshipToPolicyOwner = form.getTextField('nominee2_relationshipToPolicyOwner')
-    const nominee2_banksName = form.getTextField('nominee2_banksName')
-    const nominee2_mailingAddress = form.getTextField('nominee2_mailingAddress')
-    const nominee2_residentialAddress = form.getTextField('nominee2_residentialAddress')
-    const nominee2_contactNumberHome = form.getTextField('nominee2_contactNumberHome')
-    const nominee2_contactNumberOffice = form.getTextField('nominee2_contactNumberOffice')
-    const nominee2_contactNumberMobile = form.getTextField('nominee2_contactNumberMobile')
-    const nominee2_purposeOfNomination = form.getTextField('nominee2_purposeOfNomination')
-
-    // ----------------
-
-
-    nominee2_name.setText(formData.nominee2_name)
-    nominee2_gender.setText(formData.nominee2_gender)
-    nominee2_IDDesc.setText(formData.nominee2_IDDesc)
-    nominee2_IDNumber.setText(formData.nominee2_IDNumber)
-    nominee2_newIcNo.setText(formData.nominee2_newIcNo)
-    nominee2_dateOfBirth.setText(formData.nominee2_dateOfBirth)
-    nominee2_nationality.setText(formData.nominee2_nationality)
-    nominee2_occupation.setText(formData.nominee2_occupation)
-    nominee2_nameOfEmployer.setText(formData.nominee2_nameOfEmployer)
-    nominee2_natureOfBusiness.setText(formData.nominee2_natureOfBusiness)
-    nominee2_relationshipToPolicyOwner.setText(formData.nominee2_relationshipToPolicyOwner)
-    nominee2_banksName.setText(formData.nominee2_banksName)
-    nominee2_share.setText(formData.nominee2_share)
-    nominee2_mailingAddress.setText(formData.nominee2_mailingAddress)
-    nominee2_residentialAddress.setText(formData.nominee2_residentialAddress)
-    nominee2_contactNumberHome.setText(formData.nominee2_contactNumberHome)
-    nominee2_contactNumberOffice.setText(formData.nominee2_contactNumberOffice)
-    nominee2_contactNumberMobile.setText(formData.nominee2_contactNumberMobile)
-    nominee2_purposeOfNomination.setText(formData.nominee2_purposeOfNomination)
-    return formData.nominee2_name
-  } catch (error) {
-  }
-}
 
 

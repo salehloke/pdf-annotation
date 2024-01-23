@@ -48,14 +48,14 @@ export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
     nominee_natureOfBusiness.setText(formData[`nominee${numberOfNominee}_natureOfBusiness`])
     nominee_relationshipToPolicyOwner.setText(formData[`nominee${numberOfNominee}_relationshipToPolicyOwner`])
     nominee_banksName.setText(formData[`nominee${numberOfNominee}_banksName`])
-    nominee_savingsAccountNumber.setText(formData[`nominee${numberOfNominee}_savingsAccountNumber`])
-    nominee_share.setText(formData[`nominee${numberOfNominee}_share`])
     nominee_mailingAddress.setText(formData[`nominee${numberOfNominee}_mailingAddress`])
     nominee_residentialAddress.setText(formData[`nominee${numberOfNominee}_residentialAddress`])
     nominee_contactNumberHome.setText(formData[`nominee${numberOfNominee}_contactNumberHome`])
     nominee_contactNumberOffice.setText(formData[`nominee${numberOfNominee}_contactNumberOffice`])
     nominee_contactNumberMobile.setText(formData[`nominee${numberOfNominee}_contactNumberMobile`])
     nominee_purposeOfNomination.setText(formData[`nominee${numberOfNominee}_purposeOfNomination`])
+    nominee_savingsAccountNumber.setText(formData[`nominee${numberOfNominee}_savingsAccountNumber`])
+    nominee_share.setText(formData[`nominee${numberOfNominee}_share`])
   } catch (error) {
   }
 }

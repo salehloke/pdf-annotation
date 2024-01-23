@@ -10,13 +10,16 @@ export async function logFormData() {
       // level: 'info',
       // format: format.simple(),
       format: format.combine(
-        label({ label: 'right meow!' }),
+        label({ label: 'Sample Data' }),
         timestamp(),
         prettyPrint()
       ),
       transports: [
         new transports.Console(),
-        new transports.File({ filename: `sampleData.json` })
+        new transports.File({
+          filename: `sampleData.json`,
+          // format: format.simple()
+        }),
       ]
     });
     const remapped = await remapFormData()

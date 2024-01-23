@@ -40,11 +40,11 @@ export async function nameGenerator(isMale, isMuslim){
   return fullName
 }
 
-export async function generatePersonData() {
+export async function generatePersonData(isMuslim) {
   try {
 
     const isMale = faker.datatype.boolean()
-    let fullName = await nameGenerator(isMale, false)
+    let fullName = await nameGenerator(isMale, isMuslim)
     
 
 
@@ -69,6 +69,7 @@ export async function generatePersonData() {
     const personData = {
       name: fullName,
       isMarried: false,
+      isMuslim: isMuslim,
       isSingle: true,
       isNoChild: true,
       gender: isMale ? 'male' : 'female',

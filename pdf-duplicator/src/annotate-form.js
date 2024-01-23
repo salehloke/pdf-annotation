@@ -37,26 +37,19 @@ export async function annotateForm(pdfDoc, isMuslimForm, formData) {
     isSingle.check();
     isNoChild.check();
     if (isMuslimForm) {
+      // MUSLIM
       isMuslim.check();
     } else {
+      // NON-MUSLIM
+    await annotateTrustee(1, form, formData);
+    await annotateTrustee(2, form, formData);
       isNonMuslim.check();
     }
-
-    // page2
-    const numberOfTrustee = 1;
-    const trustee_savingsAccountNumber = form.getTextField(
-      `trustee${numberOfTrustee}_savingsAccountNumber`
-    );
-    trustee_savingsAccountNumber.setText(
-      formData[`trustee${numberOfTrustee}_savingsAccountNumber`]
-    );
-
+  
     await anotateNomineeDynamic(1, form, formData);
     await anotateNomineeDynamic(2, form, formData);
     await anotateNomineeDynamic(3, form, formData);
 
-    await annotateTrustee(1, form, formData);
-    await annotateTrustee(2, form, formData);
 
     await signaturePageAnnotate(1, form, formData);
     await signaturePageAnnotate(2, form, formData);

@@ -6,10 +6,13 @@ export async function signaturePageAnnotate(numberOfTrustee, form, formData) {
     // console.log(`trustee${numberOfTrustee}`)
     // console.log(`trustee${numberOfTrustee}_annotated`, formData[`trustee${numberOfTrustee}_name`])
     // page2
+    const isMuslim = formData.isMuslim
     /** TRUSTEE  */
     const trustee_name = form.getTextField(`trustee${numberOfTrustee}_name`);
     trustee_name.enableMultiline();
-    trustee_name.setText(formData[`trustee${numberOfTrustee}_name`]);
+    if(isMuslim){
+      trustee_name.setText(formData[`trustee${numberOfTrustee}_name`]);
+    }
 
     const witness_name = form.getTextField(`witness1_name`);
     witness_name.enableMultiline();

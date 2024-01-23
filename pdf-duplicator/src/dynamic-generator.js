@@ -81,7 +81,7 @@ export async function dynamicTestCaseGenerator(
       /**
        * signature Section
        */
-      if (isSignatureOfTrustee1) {
+      if (isSignatureOfTrustee1 && !isMuslim) {
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
@@ -89,7 +89,7 @@ export async function dynamicTestCaseGenerator(
         // console.log("imagePath trustee1", imagePath);
       }
 
-      if (isSignatureOfTrustee2) {
+      if (isSignatureOfTrustee2 && !isMuslim) {
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";

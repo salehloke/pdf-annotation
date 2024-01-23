@@ -33,8 +33,8 @@ const formType5 = GLOBAL_CONFIG.UNSIGNED_DIGITAL_FORM_PORTRAIT_NO_DATA_AUTOFILL;
  * NON-MUSLIM + DIGITAL FORM: APPROVED CASES
  * Category 1 + scenario 38
  */
-dynamicTestCaseGenerator(1, 38, 100);
+dynamicTestCaseGenerator(1, 38, 1);
 
 
-await logFormData()
+// await logFormData()
 

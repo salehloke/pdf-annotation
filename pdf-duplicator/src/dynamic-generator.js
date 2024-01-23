@@ -45,6 +45,7 @@ export async function dynamicTestCaseGenerator(
     const rotationAngle = scenarioObj.pageRotation;
 
     const outputFolder = `./shared/${caseName}`;
+    // const outputFolder = `\\\\filestore.maybank-my.mbb.dir\\maybank-my\\Data Strategy and Governance\\_shared with other departments\\EtiqaPlus\\shared\\${caseName}`;
     let pdfInputPath = formType5.pdfPath;
 
     // Check if the file exists
@@ -125,7 +126,7 @@ export async function dynamicTestCaseGenerator(
 
       // Save the modified PDF with a different name
       const outputFileName = `${caseName}-no${i}.pdf`;
-      createFolderIfNotExists(outputFolder);
+      await createFolderIfNotExists(outputFolder);
       // createFolderIfNotExists('./shared/compressed')
       const outputPath = `${outputFolder}/${outputFileName}`;
 
@@ -134,6 +135,8 @@ export async function dynamicTestCaseGenerator(
       await fs.writeFile(outputPath, modifiedPdfBytes);
       /** end of SAVING FILE SECTION */
     }
+    // await createFolderIfNotExists(`./shared/compressed/`);
+
     // await compressFolder(outputFolder, `./shared/compressed/${caseName}.zip`);
   } catch (error) {
     console.error("Error modifying and saving PDFs:", error);

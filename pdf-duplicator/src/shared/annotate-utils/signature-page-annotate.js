@@ -1,54 +1,46 @@
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { promises as fs } from "fs";
 
-
-export async function signaturePageAnnotate(form,formData) {
+export async function signaturePageAnnotate(numberOfTrustee, form, formData) {
   try {
     // console.log(`trustee${numberOfTrustee}`)
     // console.log(`trustee${numberOfTrustee}_annotated`, formData[`trustee${numberOfTrustee}_name`])
     // page2
     /** TRUSTEE  */
-    const trustee_name = form.getTextField(`trustee${numberOfTrustee}_name`)
-    trustee_name.enableMultiline()
-    
-    trustee_name.setText(formData[`trustee${numberOfTrustee}_name`])
-    
-    // const trustee_IDDesc = form.getTextField(`trustee${numberOfTrustee}_idDescription`)
-    // const trustee_IDNumber = form.getTextField(`trustee${numberOfTrustee}_idNumber`)
-    // const trustee_newIcNo = form.getTextField(`trustee${numberOfTrustee}_newIcNumber`)
-    // const trustee_dateOfBirth = form.getTextField(`trustee${numberOfTrustee}_dateOfBirth`)
-    // const trustee_nationality = form.getTextField(`trustee${numberOfTrustee}_nationality`)
-    // const trustee_occupation = form.getTextField(`trustee${numberOfTrustee}_occupation`)
-    // const trustee_nameOfEmployer = form.getTextField(`trustee${numberOfTrustee}_nameOfEmployer`)
-    // const trustee_natureOfBusiness = form.getTextField(`trustee${numberOfTrustee}_natureOfBusiness`)
-    // const trustee_banksName = form.getTextField(`trustee${numberOfTrustee}_banksName`)
-    // const trustee_savingsAccountNumber = form.getTextField(`trustee${numberOfTrustee}_savingsAccountNumber`)
-    // const trustee_mailingAddress = form.getTextField(`trustee${numberOfTrustee}_mailingAddress`)
-    // const trustee_residentialAddress = form.getTextField(`trustee${numberOfTrustee}_residentialAddress`)
-    // const trustee_contactNumberHome = form.getTextField(`trustee${numberOfTrustee}_contactNumberHome`)
-    // const trustee_contactNumberOffice = form.getTextField(`trustee${numberOfTrustee}_contactNumberOffice`)
-    // const trustee_contactNumberMobile = form.getTextField(`trustee${numberOfTrustee}_contactNumberMobile`)
-    // const trustee_reasonForAppointmentOfTrustee = form.getTextField(`trustee${numberOfTrustee}_reasonForAppointmentOfTrustee`)
-    // trustee_name.setText(formData[`trustee${numberOfTrustee}_name`])
-    // trustee_gender.setText(formData[`trustee${numberOfTrustee}_gender`])
-    // trustee_IDDesc.setText(formData[`trustee${numberOfTrustee}_idDescription`])
-    // trustee_IDNumber.setText(formData[`trustee${numberOfTrustee}_idNumber`])
-    // trustee_newIcNo.setText(formData[`trustee${numberOfTrustee}_newIcNumber`])
-    // trustee_dateOfBirth.setText(formData[`trustee${numberOfTrustee}_dateOfBirth`])
-    // trustee_nationality.setText(formData[`trustee${numberOfTrustee}_nationality`])
-    // trustee_occupation.setText(formData[`trustee${numberOfTrustee}_occupation`])
-    // trustee_nameOfEmployer.setText(formData[`trustee${numberOfTrustee}_nameOfEmployer`])
-    // trustee_natureOfBusiness.setText(formData[`trustee${numberOfTrustee}_natureOfBusiness`])
-    // trustee_banksName.setText(formData[`trustee${numberOfTrustee}_banksName`])
-    // trustee_savingsAccountNumber.setText(formData[`trustee${numberOfTrustee}_savingsAccountNumber`])
-    // trustee_mailingAddress.setText(formData[`trustee${numberOfTrustee}_mailingAddress`])
-    // trustee_residentialAddress.setText(formData[`trustee${numberOfTrustee}_residentialAddress`])
-    // trustee_contactNumberHome.setText(formData[`trustee${numberOfTrustee}_contactNumberHome`])
-    // trustee_contactNumberOffice.setText(formData[`trustee${numberOfTrustee}_contactNumberOffice`])
-    // trustee_contactNumberMobile.setText(formData[`trustee${numberOfTrustee}_contactNumberMobile`])
-    // trustee_reasonForAppointmentOfTrustee.setText(formData[`trustee${numberOfTrustee}_reasonForAppointmentOfTrustee`])
- 
-  } catch (error) {
-  }
-}
+    const trustee_name = form.getTextField(`trustee${numberOfTrustee}_name`);
+    trustee_name.enableMultiline();
+    trustee_name.setText(formData[`trustee${numberOfTrustee}_name`]);
 
+    const witness_name = form.getTextField(`witness1_name`);
+    witness_name.enableMultiline();
+    witness_name.setText(formData[`witness1_name`]);
+    const witness_icNo = form.getTextField(`witness1_icNo`);
+    witness_icNo.setText(formData[`witness1_icNo`]);
+    const witness_address1 = form.getTextField(`witness1_address1`);
+    witness_address1.setText(formData[`witness1_address1`]);
+    const witness_address2 = form.getTextField(`witness1_address2`);
+    witness_address2.setText(formData[`witness1_address2`]);
+    const witness_address3 = form.getTextField(`witness1_address3`);
+    witness_address3.setText(formData[`witness1_address3`]);
+    const witness_address4 = form.getTextField(`witness1_address4`);
+    witness_address4.setText(formData[`witness1_address4`]);
+    const witness_telNo = form.getTextField(`witness1_tellNo`);
+    witness_telNo.setText(formData[`witness1_tellNo`]);
+
+    const policyholder_name = form.getTextField(`policyholder_name`);
+    policyholder_name.enableMultiline();
+    policyholder_name.setText(formData[`policyholder_name`]);
+    const policyholder_icNo = form.getTextField(`policyholder_icNo`);
+    policyholder_icNo.setText(formData[`policyholder_icNo`]);
+    const policyholder_address1 = form.getTextField(`policyholder_address1`);
+    policyholder_address1.setText(formData[`policyholder_address1`]);
+    const policyholder_address2 = form.getTextField(`policyholder_address2`);
+    policyholder_address2.setText(formData[`policyholder_address2`]);
+    const policyholder_address3 = form.getTextField(`policyholder_address3`);
+    policyholder_address3.setText(formData[`policyholder_address3`]);
+    const policyholder_address4 = form.getTextField(`policyholder_address4`);
+    policyholder_address4.setText(formData[`policyholder_address4`]);
+    const policyholder_telNo = form.getTextField(`policyholder_telNo`);
+    policyholder_telNo.setText(formData[`policyholder_telNo`]);
+  } catch (error) {}
+}

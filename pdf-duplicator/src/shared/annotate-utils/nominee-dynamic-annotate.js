@@ -3,7 +3,6 @@ import { promises as fs } from "fs";
 
 
 // Folder functions
-// import { GLOBAL_CONFIG } from "../../signature-config";
 
 
 export async function anotateNomineeDynamic(numberOfNominee,form,formData) {

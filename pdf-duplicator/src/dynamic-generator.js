@@ -8,7 +8,8 @@ import { signTrustee2 } from "./shared/signature-utils/sign-trustee2.js";
 import { signPolicyHolder } from "./shared/signature-utils/sign-policyholder.js";
 import { signWitness } from "./shared/signature-utils/sign-witness.js";
 import { signUniversalCoordinates } from "./shared/signature-utils/sign-universal-coordinate.js";
-import { annotateFormPage1, generateFormData } from "./annotate-form.js";
+import { annotateForm } from "./annotate-form.js";
+import { generateFormData } from "./shared/annotate-utils/random-generator.js";
 
 // Folder functions
 import { createFolderIfNotExists } from "./shared/file-utils/create-folder.js";
@@ -58,7 +59,7 @@ export async function dynamicTestCaseGenerator(
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
       
       const formData = await generateFormData()
-      await annotateFormPage1(pdfDoc, isMuslim, formData);
+      await annotateForm(pdfDoc, isMuslim, formData);
 
       // Modify the PDF - for example, add a text annotation to the first page
       const pages = pdfDoc.getPages();

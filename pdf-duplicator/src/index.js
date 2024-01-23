@@ -22,22 +22,19 @@ const formType4 = GLOBAL_CONFIG.UNSIGNED_DIGITAL_FORM_PORTRAIT_NO_DATA;
 const formType5 = GLOBAL_CONFIG.UNSIGNED_DIGITAL_FORM_PORTRAIT_NO_DATA_AUTOFILL;
 // const formType5 = GLOBAL_CONFIG.UNSIGNED_MANUAL_SCANNED_PORTRAIT_NO_DATA;
 
-console.log("start");
-
-// category1_scenario6(formType1.pdfPath, formType1.decription, 20);
-// category1_scenario7(formType1.pdfPath, formType1.decription, 20);
-// category1_scenario6(formType5.pdfPath, formType5.decription, 20);
 
 // annotateForm(formType5.pdfPath, formType5.decription, 20)
 // NON-MUSLIM + MANUAL SCANNED
 // category3_scenario35(formType3.pdfPath, formType3.decription, 20);
 
 // 
-// NON-MUSLIM + DIGITAL FORM: APPROVED CASES
-dynamicTestCaseGenerator(1, 38, 1);
-// dynamicTestCaseGenerator(1, 39, 100);
-// dynamicTestCaseGenerator(1, 40, 100);
-// dynamicTestCaseGenerator(1, 41, 100);
+// 
+/**
+ * NON-MUSLIM + DIGITAL FORM: APPROVED CASES
+ * Category 1 + scenario 38
+ */
+dynamicTestCaseGenerator(1, 38, 100);
+
 
 await logFormData()
 

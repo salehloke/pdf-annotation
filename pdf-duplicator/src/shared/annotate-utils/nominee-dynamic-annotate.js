@@ -13,7 +13,6 @@ export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
     // page2
     /** NOMINEE 1 */
     const nominee_name = form.getTextField(`nominee${numberOfNominee}_name`)
-    nominee_name.enableMultiline()
     const nominee_gender = form.getTextField(`nominee${numberOfNominee}_gender`)
     const nominee_IDDesc = form.getTextField(`nominee${numberOfNominee}_IDDesc`)
     const nominee_IDNumber = form.getTextField(`nominee${numberOfNominee}_IDNumber`)
@@ -25,6 +24,7 @@ export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
     const nominee_natureOfBusiness = form.getTextField(`nominee${numberOfNominee}_natureOfBusiness`)
     const nominee_relationshipToPolicyOwner = form.getTextField(`nominee${numberOfNominee}_relationshipToPolicyOwner`)
     const nominee_banksName = form.getTextField(`nominee${numberOfNominee}_banksName`)
+    const nominee_share = form.getTextField(`nominee${numberOfNominee}_share`)
     const nominee_savingsAccountNumber = form.getTextField(`nominee${numberOfNominee}_savingsAccountNumber`)
     const nominee_mailingAddress = form.getTextField(`nominee${numberOfNominee}_mailingAddress`)
     const nominee_residentialAddress = form.getTextField(`nominee${numberOfNominee}_residentialAddress`)
@@ -32,6 +32,10 @@ export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
     const nominee_contactNumberOffice = form.getTextField(`nominee${numberOfNominee}_contactNumberOffice`)
     const nominee_contactNumberMobile = form.getTextField(`nominee${numberOfNominee}_contactNumberMobile`)
     const nominee_purposeOfNomination = form.getTextField(`nominee${numberOfNominee}_purposeOfNomination`)
+    nominee_name.enableMultiline()
+    nominee_mailingAddress.enableMultiline()
+    nominee_residentialAddress.enableMultiline()
+    nominee_purposeOfNomination.enableMultiline()
 
     // ----------------
 

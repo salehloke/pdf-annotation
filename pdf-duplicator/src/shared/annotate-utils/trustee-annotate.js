@@ -10,7 +10,6 @@ export async function annotateTrustee(numberOfTrustee,form,formData) {
     /** TRUSTEE  */
     
     const trustee_name = form.getTextField(`trustee${numberOfTrustee}_name`)
-    trustee_name.enableMultiline()
     const trustee_gender = form.getTextField(`trustee${numberOfTrustee}_gender`)
     const trustee_IDDesc = form.getTextField(`trustee${numberOfTrustee}_idDescription`)
     const trustee_IDNumber = form.getTextField(`trustee${numberOfTrustee}_idNumber`)
@@ -28,6 +27,11 @@ export async function annotateTrustee(numberOfTrustee,form,formData) {
     const trustee_contactNumberOffice = form.getTextField(`trustee${numberOfTrustee}_contactNumberOffice`)
     const trustee_contactNumberMobile = form.getTextField(`trustee${numberOfTrustee}_contactNumberMobile`)
     const trustee_reasonForAppointmentOfTrustee = form.getTextField(`trustee${numberOfTrustee}_reasonForAppointmentOfTrustee`)
+    trustee_name.enableMultiline()
+    trustee_mailingAddress.enableMultiline()
+    trustee_residentialAddress.enableMultiline()
+    trustee_reasonForAppointmentOfTrustee.enableMultiline()
+
     trustee_name.setText(formData[`trustee${numberOfTrustee}_name`])
     trustee_gender.setText(formData[`trustee${numberOfTrustee}_gender`])
     trustee_IDDesc.setText(formData[`trustee${numberOfTrustee}_idDescription`])

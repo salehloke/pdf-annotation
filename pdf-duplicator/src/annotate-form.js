@@ -47,6 +47,7 @@ export async function generateFormData(){
     nominee1_relationshipToPolicyOwner: nominee1.relationshipToPolicyOwner,
     nominee1_banksName: nominee1.banksName, // 
     nominee1_share: nominee1.share,
+    nominee1_savingsAccountNumber: nominee1.savingsAccountNumber,
     nominee1_mailingAddress: nominee1.mailingAddress,
     nominee1_residentialAddress: nominee1.residentialAddress,
     nominee1_contactNumberHome: nominee1.contactNumberHome,
@@ -67,6 +68,7 @@ export async function generateFormData(){
     nominee2_relationshipToPolicyOwner: nominee2.relationshipToPolicyOwner,
     nominee2_banksName: nominee2.banksName, // 
     nominee2_share: nominee2.share,
+    nominee2_savingsAccountNumber: nominee2.savingsAccountNumber,
     nominee2_mailingAddress: nominee2.mailingAddress,
     nominee2_residentialAddress: nominee2.residentialAddress,
     nominee2_contactNumberHome: nominee2.contactNumberHome,
@@ -87,6 +89,8 @@ export async function generateFormData(){
     nominee3_relationshipToPolicyOwner: nominee3.relationshipToPolicyOwner,
     nominee3_banksName: nominee3.banksName, // 
     nominee3_share: nominee3.share,
+    nominee3_savingsAccountNumber: nominee3.savingsAccountNumber,
+
     nominee3_mailingAddress: nominee3.mailingAddress,
 
     nominee3_residentialAddress: nominee3.residentialAddress,
@@ -99,8 +103,9 @@ export async function generateFormData(){
     trustee1_name: trustee1.name,
     trustee1_gender: trustee1.gender,
     trustee1_IDDesc: 'IC',
-    trustee1_IDNumber: trustee1.IDNumber,
-    trustee1_newIcNo: trustee1.IDNumber,
+    trustee1_idDescription: 'IC',
+    trustee1_idNumber: trustee1.IDNumber,
+    trustee1_newIcNumber: trustee1.IDNumber,
     trustee1_dateOfBirth: trustee1.dateOfBirth,
     trustee1_nationality: trustee1.nationality,
     trustee1_occupation: trustee1.occupation,
@@ -109,18 +114,20 @@ export async function generateFormData(){
     trustee1_relationshipToPolicyOwner: trustee1.relationshipToPolicyOwner,
     trustee1_banksName: trustee1.banksName, // 
     trustee1_share: trustee1.share,
+    trustee1_savingsAccountNumber: trustee1.savingsAccountNumber,
     trustee1_mailingAddress: trustee1.mailingAddress,
     trustee1_residentialAddress: trustee1.residentialAddress,
     trustee1_contactNumberHome: trustee1.contactNumberHome,
     trustee1_contactNumberOffice: trustee1.contactNumberOffice,
     trustee1_contactNumberMobile: trustee1.contactNumberMobile,
-    trustee1_purposeOfNomination: trustee1.purposeOfNomination,
+    trustee1_reasonForAppointmentOfTrustee: trustee1.purposeOfNomination,
 
     trustee2_name: trustee2.name,
     trustee2_gender: trustee2.gender,
     trustee2_IDDesc: 'IC',
-    trustee2_IDNumber: trustee2.IDNumber,
-    trustee2_newIcNo: trustee2.IDNumber,
+    trustee2_IDDescription: 'IC',
+    trustee2_idNumber: trustee2.IDNumber,
+    trustee2_newIcNumber: trustee2.IDNumber,
     trustee2_dateOfBirth: trustee2.dateOfBirth,
     trustee2_nationality: trustee2.nationality,
     trustee2_occupation: trustee2.occupation,
@@ -129,12 +136,13 @@ export async function generateFormData(){
     trustee2_relationshipToPolicyOwner: trustee2.relationshipToPolicyOwner,
     trustee2_banksName: trustee2.banksName, // 
     trustee2_share: trustee2.share,
+    trustee2_savingsAccountNumber: trustee2.savingsAccountNumber,
     trustee2_mailingAddress: trustee2.mailingAddress,
     trustee2_residentialAddress: trustee2.residentialAddress,
     trustee2_contactNumberHome: trustee2.contactNumberHome,
     trustee2_contactNumberOffice: trustee2.contactNumberOffice,
     trustee2_contactNumberMobile: trustee2.contactNumberMobile,
-    trustee2_purposeOfNomination: trustee2.purposeOfNomination,
+    trustee2_reasonForAppointmentOfTrustee: trustee2.purposeOfNomination,
   }
   return formData
 }
@@ -168,12 +176,10 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm, formData) {
     }
 
     // page2
-    const numberOfNominee = 1
-    // const nominee_mailingAddress = form.getTextField(`nominee${numberOfNominee}_mailingAddress`)
-    // nominee_mailingAddress.setText(formData[`nominee${numberOfNominee}_mailingAddress`])
-
-    // await anotateNominee1(form, formData)
-    // await anotateNomineeDynamic(1,form, formData)
+    const numberOfTrustee = 1
+    const trustee_savingsAccountNumber = form.getTextField(`trustee${numberOfTrustee}_savingsAccountNumber`)
+    trustee_savingsAccountNumber.setText(formData[`trustee${numberOfTrustee}_savingsAccountNumber`])
+    
     await anotateNomineeDynamic(1,form, formData)
     await anotateNomineeDynamic(2,form, formData)
     await anotateNomineeDynamic(3,form, formData)

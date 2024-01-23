@@ -35,6 +35,9 @@ export async function anotateNomineeDynamic(numberOfNominee,form,formData) {
     nominee_mailingAddress.enableMultiline()
     nominee_residentialAddress.enableMultiline()
     nominee_purposeOfNomination.enableMultiline()
+    nominee_contactNumberHome.enableMultiline()
+    nominee_contactNumberMobile.enableMultiline()
+    nominee_contactNumberOffice.enableMultiline()
 
     // ----------------
 

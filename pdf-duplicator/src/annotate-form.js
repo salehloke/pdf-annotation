@@ -183,6 +183,7 @@ export async function annotateFormPage1(pdfDoc, isMuslimForm, formData) {
     await annotateTrustee(1,form, formData)
     await annotateTrustee(2,form, formData)
 
+    await signaturePageAnnotate(form, formData)
 
     // 
     

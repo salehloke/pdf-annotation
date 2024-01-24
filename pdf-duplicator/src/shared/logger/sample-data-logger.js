@@ -1,5 +1,6 @@
 import { createLogger, format, transports } from 'winston';
 import { dummyFormData } from '../../signature-config.js';
+import { generateFormData } from '../annotate-utils/random-generator.js';
 const { combine, timestamp, label, prettyPrint } = format;
 
 export async function logFormData() {
@@ -22,7 +23,9 @@ export async function logFormData() {
         }),
       ]
     });
-    const remapped = await remapFormData()
+    // const remapped = await remapFormData()
+    const sampleData = await generateFormData(true)
+    const remapped = await remapFormData(sampleData)
     const stringified = JSON.stringify(remapped)
   
     logger.info(stringified)
@@ -30,23 +33,25 @@ export async function logFormData() {
   }
   
   
-  export async function remapFormData(){
+  export async function remapFormData(jsonObject){
     const formData = dummyFormData.pages
-    let newFormData = []
-  
-    formData.forEach((elements,index) => {
-      for (const key in elements){
-        if(elements.hasOwnProperty(key)) {
-          const value = elements[key]
-          const newObj = {
-            pageNo: index+1,
-            PlaceHolderText: `${key}`,
-            Value: `${value}`,
-  
-          }
-          newFormData.push(newObj)
+    let newFormData = jsonObject
+    for (const key in jsonObject){
+      if(jsonObject.hasOwnProperty(key)) {
+        const value = jsonObject[key]
+        console.log('value',value)
+        console.log('key', key)
+        console.log(jsonObject)
+        if(value === true){
+          newFormData[key] = "yes"
+          // jsonObject[key].value = "yes"
+        }else {
+          newFormData[key] = "no"
+          // jsonObject[key].value = "no"
         }
       }
-    });
+    }
+  
+    
     return newFormData
   }

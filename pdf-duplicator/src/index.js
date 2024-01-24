@@ -41,10 +41,11 @@ const formType5 = GLOBAL_CONFIG.UNSIGNED_DIGITAL_FORM_PORTRAIT_NO_DATA_AUTOFILL;
 /**
  * MUSLIM + DIGITAL FORM: APPROVED CASES
 */
-dynamicTestCaseGenerator(2, 38, 1);
-// dynamicTestCaseGenerator(2, 39, 100);
-// dynamicTestCaseGenerator(2, 40, 100);
-// dynamicTestCaseGenerator(2, 41, 100);
+logFormData()
+// const form2Case23 = await dynamicTestCaseGenerator(2, 23, 100);
+// await dynamicTestCaseGenerator(2, 24, 100);
+// await dynamicTestCaseGenerator(2, 25, 100);
+// await dynamicTestCaseGenerator(2, 26, 100);
 /** end of cases */
 
 

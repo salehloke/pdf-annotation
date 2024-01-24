@@ -81,7 +81,7 @@ export async function dynamicTestCaseGenerator(
       /**
        * signature Section
        */
-      if (isSignatureOfTrustee1 && !isMuslim) {
+      if (isSignatureOfTrustee1 ) {
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
@@ -89,7 +89,7 @@ export async function dynamicTestCaseGenerator(
         // console.log("imagePath trustee1", imagePath);
       }
 
-      if (isSignatureOfTrustee2 && !isMuslim) {
+      if (isSignatureOfTrustee2 ) {
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
@@ -137,7 +137,7 @@ export async function dynamicTestCaseGenerator(
     }
     // await createFolderIfNotExists(`./shared/compressed/`);
 
-    // await compressFolder(outputFolder, `./shared/compressed/${caseName}.zip`);
+    // await compressFolder(outputFolder, `./shared/compressed/${caseName}.zip`,`${caseName}.zip`);
   } catch (error) {
     console.error("Error modifying and saving PDFs:", error);
   }

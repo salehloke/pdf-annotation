@@ -9,12 +9,12 @@ export async function logFormData() {
     // Configure Winston
     const logger = createLogger({
       // level: 'info',
-      // format: format.simple(),
-      format: format.combine(
-        label({ label: 'Sample Data' }),
-        timestamp(),
-        prettyPrint()
-      ),
+      format: format.simple(),
+      // format: format.combine(
+      //   label({ label: 'Sample Data' }),
+      //   timestamp(),
+      //   prettyPrint()
+      // ),
       transports: [
         new transports.Console(),
         new transports.File({
@@ -39,19 +39,27 @@ export async function logFormData() {
     for (const key in jsonObject){
       if(jsonObject.hasOwnProperty(key)) {
         const value = jsonObject[key]
-        console.log('value',value)
-        console.log('key', key)
-        console.log(jsonObject)
-        if(value === true){
-          newFormData[key] = "yes"
+        
+        const keySubstring = key.toString()
+        const isBoolean = keySubstring.slice(0,2) === "is" ? true: false 
+        // console.log(jsonObject)
+        
+        if(isBoolean){
+          console.log('key', key)
+          if(value=== true){
+            jsonObject[key] = "yes"
+
+          } else {
+            jsonObject[key] = "no"
+
+          }
           // jsonObject[key].value = "yes"
         }else {
-          newFormData[key] = "no"
           // jsonObject[key].value = "no"
         }
       }
     }
   
     
-    return newFormData
+    return jsonObject
   }

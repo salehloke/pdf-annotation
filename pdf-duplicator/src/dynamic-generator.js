@@ -15,6 +15,10 @@ import { generateFormData } from "./shared/annotate-utils/random-generator.js";
 import { createFolderIfNotExists } from "./shared/file-utils/create-folder.js";
 import { compressFolder } from "./shared/file-utils/compress-folder.js";
 import { GLOBAL_CONFIG, dummyFormData } from "./signature-config.js";
+import { drawRandomSignatureWitness } from "./shared/signature-utils/random-witness-sign.js";
+import { drawRandomSignaturePolicyholder } from "./shared/signature-utils/random-policyholder-sign.js";
+import { drawRandomSignatureTrustee1 } from "./shared/signature-utils/random-trustee1-sign.js";
+import { drawRandomSignatureTrustee2 } from "./shared/signature-utils/random-trustee2-sign.js";
 
 const signatureImagesArr = GLOBAL_CONFIG.SIGNATURE_IMAGES_ARR;
 
@@ -85,7 +89,8 @@ export async function dynamicTestCaseGenerator(
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
-        await signTrustee1(signaturePage, imagePath, pdfDoc);
+        await drawRandomSignatureTrustee1(signaturePage,pdfDoc)
+        // await signTrustee1(signaturePage, imagePath, pdfDoc);
         // console.log("imagePath trustee1", imagePath);
       }
 
@@ -93,7 +98,8 @@ export async function dynamicTestCaseGenerator(
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
-        await signTrustee2(signaturePage, imagePath, pdfDoc);
+          await drawRandomSignatureTrustee2(signaturePage, pdfDoc)
+        // await signTrustee2(signaturePage, imagePath, pdfDoc);
         // console.log("imagePath trustee2", imagePath);
       }
 
@@ -101,15 +107,17 @@ export async function dynamicTestCaseGenerator(
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
-        await signWitness(signaturePage, imagePath, pdfDoc);
+        // await signWitness(signaturePage, imagePath, pdfDoc);
+        await drawRandomSignatureWitness(signaturePage, pdfDoc)
         // console.log("imagePath witness", imagePath);
       }
 
       if (isSignatureOfPolicyHolder) {
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
-          "./shared/signature-png/person_" + randomNumber + ".png";
-        await signPolicyHolder(signaturePage, imagePath, pdfDoc);
+        "./shared/signature-png/person_" + randomNumber + ".png";
+        await drawRandomSignaturePolicyholder(signaturePage,pdfDoc)
+        // await signPolicyHolder(signaturePage, imagePath, pdfDoc);
         // console.log("imagePath policyholder", imagePath);
       }
       /** end of signature section */

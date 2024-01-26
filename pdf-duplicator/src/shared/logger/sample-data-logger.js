@@ -63,3 +63,52 @@ export async function logFormData() {
     
     return jsonObject
   }
+
+  export async function placeholderIDs(jsonObject){
+    const formData = dummyFormData.pages
+    let newFormData = []
+    for (const key in jsonObject){
+      if(jsonObject.hasOwnProperty(key)) {
+        const value = jsonObject[key]
+        newFormData.push(key)
+        const keySubstring = key.toString()
+        const isBoolean = keySubstring.slice(0,2) === "is" ? true: false 
+        // console.log(jsonObject)
+        
+      }
+    }
+  
+    
+    return newFormData
+  }
+
+
+  export async function logPlaceholderIDs() {
+    // Log to the console
+  
+    // Configure Winston
+    const logger = createLogger({
+      // level: 'info',
+      format: format.simple(),
+      // format: format.combine(
+      //   label({ label: 'Sample Data' }),
+      //   timestamp(),
+      //   prettyPrint()
+      // ),
+      transports: [
+        new transports.Console(),
+        new transports.File({
+          filename: `PlaceholderIDs.json`,
+          // format: format.simple()
+        }),
+      ]
+    });
+    // const remapped = await remapFormData()
+    const sampleData = await generateFormData(true)
+    const remapped = await placeholderIDs(sampleData)
+    const stringified = JSON.stringify(remapped)
+  
+    logger.info(stringified)
+    
+  }
+  

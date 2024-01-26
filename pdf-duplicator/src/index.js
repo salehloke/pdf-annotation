@@ -8,7 +8,7 @@ import { signTrustee2 } from "./shared/signature-utils/sign-trustee2.js";
 import { signPolicyHolder } from "./shared/signature-utils/sign-policyholder.js";
 import { signWitness } from "./shared/signature-utils/sign-witness.js";
 import { GLOBAL_CONFIG } from "./signature-config.js";
-import { logFormData } from "./shared/logger/sample-data-logger.js";
+import { logFormData, logPlaceholderIDs } from "./shared/logger/sample-data-logger.js";
 
 
 // CATEGORY 3
@@ -41,9 +41,10 @@ const formType5 = GLOBAL_CONFIG.UNSIGNED_DIGITAL_FORM_PORTRAIT_NO_DATA_AUTOFILL;
 /**
  * MUSLIM + DIGITAL FORM: APPROVED CASES
 */
-logFormData()
+// logFormData()
+// logPlaceholderIDs()
 // const form2Case23 = await dynamicTestCaseGenerator(2, 23, 100);
-// await dynamicTestCaseGenerator(2, 24, 100);
+await dynamicTestCaseGenerator(1, 38, 200);
 // await dynamicTestCaseGenerator(2, 25, 100);
 // await dynamicTestCaseGenerator(2, 26, 100);
 /** end of cases */

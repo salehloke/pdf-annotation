@@ -89,7 +89,7 @@ export async function dynamicTestCaseGenerator(
         var randomNumber = Math.floor(Math.random() * 57) + 1;
         const imagePath =
           "./shared/signature-png/person_" + randomNumber + ".png";
-        await drawRandomSignatureTrustee1(signaturePage,pdfDoc)
+        await drawRandomSignatureTrustee1(signaturePage, 115, 635)
         // await signTrustee1(signaturePage, imagePath, pdfDoc);
         // console.log("imagePath trustee1", imagePath);
       }
@@ -141,6 +141,7 @@ export async function dynamicTestCaseGenerator(
       const modifiedPdfBytes = await pdfDoc.save();
       
       await fs.writeFile(outputPath, modifiedPdfBytes);
+      console.log(`Generated: ${outputFileName}`)
       /** end of SAVING FILE SECTION */
     }
     // await createFolderIfNotExists(`./shared/compressed/`);

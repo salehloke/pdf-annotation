@@ -3,26 +3,26 @@ import { randomSvgPath } from "./draw-sign-path.js";
 
 export async function drawRandomSignatureTrustee1(
   signaturePage,
-  pdfDoc
+  coordinateX, 
+  coordinateY,
+  scale
 ) {
-  const coordinatesSign = {
-    x: 710,
-    y: 800,
-    xRatio: 0.480178876,
-    yRatio: 0.23375
-  };
+
+  const x = isNaN(coordinateX) ? 370 : coordinateX
+  const y = isNaN(coordinateY) ? 635 : coordinateY  
+  const scaleXY = isNaN(scale) ? 0.45 : scale
 
   // Add a signature image
 
   const svgPath = await randomSvgPath()
 
   // draw 1 stroke
-  signaturePage.moveTo(115,635)
-  signaturePage.drawSvgPath(await randomSvgPath(), {scale: 0.45, borderWidth:4})
+  signaturePage.moveTo(x,y)
+  signaturePage.drawSvgPath(await randomSvgPath(), {scale: scaleXY, borderWidth:4})
   
   // draw 2nd stroke
-  signaturePage.moveTo(115,635)
-  signaturePage.drawSvgPath(await randomSvgPath(), {scale: 0.5, borderWidth:2})
+  signaturePage.moveTo(x,y)
+  signaturePage.drawSvgPath(await randomSvgPath(), {scale: scaleXY, borderWidth:2})
   
   // draw 3rd stroke
   // signaturePage.moveTo(105,535)

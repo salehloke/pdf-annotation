@@ -59,7 +59,7 @@ export async function generatePersonData(isMuslim) {
 
     const midIDNumber = faker.number.int({max:99, min:10})
     const lastIDNumber = faker.number.int({max:9999, min:1000})
-    const id = `${yearID}${monthID}${dayID}-${midIDNumber}-${lastIDNumber}`
+    const id = `${yearID}${monthID}${dayID}-${midIDNumber}M-${lastIDNumber}X`
     const nationality = 'Malaysia'
 
     // Address

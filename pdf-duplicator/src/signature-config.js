@@ -19,6 +19,15 @@ export const GLOBAL_CONFIG = {
     decription: "formtype5",
     pdfPath: "./shared/pdf-samples/unsigned-nomination-form_2.pdf"
   },
+  MANUAL_FORM_1: {
+    decription: "manual_form_1",
+    pdfPath: "./shared/pdf-samples/manual_form_1.pdf"
+  },
+  MANUAL_FORM_4: {
+    decription: "manual_form_4",
+    pdfPath: "./shared/pdf-samples/manual_form_4.pdf"
+  },
+
 
   category: [
     {        name: 'category1', isMuslim: false, isDigital: true    },

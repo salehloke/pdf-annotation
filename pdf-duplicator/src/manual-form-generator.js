@@ -30,7 +30,7 @@ export async function manualFormGenerator(
 ) {
   try {
 
-    const caseName = `manual-form-${categoryNum}-scenario${scenarioNum}`;
+    const caseName = `manualForm-${categoryNum}-scenario${scenarioNum}`;
     const categoryObj = GLOBAL_CONFIG.category[4 - 1]; // because starts with 0
     const scenarioObj = GLOBAL_CONFIG.scenario[scenarioNum - 1]; // because starts with 0
 

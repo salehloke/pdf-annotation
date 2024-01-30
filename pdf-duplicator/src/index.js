@@ -15,6 +15,7 @@ import { logFormData, logPlaceholderIDs } from "./shared/logger/sample-data-logg
 // import { dynamicTestCaseGenerator } from "./dynamic-generator.js";
 import { dynamicTestCaseGenerator } from "./dynamic-generator.js";
 import { manualFormGenerator } from "./manual-form-generator.js";
+import { pageDuplicatorGenerator } from "./page-duplicator-generator.js";
 
 const formType1 = GLOBAL_CONFIG.NON_MUSLIM_NOMINATION_WITH_DATA;
 const formType2 = GLOBAL_CONFIG.MUSLIM_NOMINATION_WITH_DATA;
@@ -46,8 +47,9 @@ const formType5 = GLOBAL_CONFIG.UNSIGNED_DIGITAL_FORM_PORTRAIT_NO_DATA_AUTOFILL;
 // logPlaceholderIDs()
 // const form2Case23 = await dynamicTestCaseGenerator(2, 23, 100);
 // await dynamicTestCaseGenerator(1, 38, 1000);
-await manualFormGenerator( './shared/pdf-samples/manual-form/manual_form_4.pdf' ,4 ,38,1)
-await manualFormGenerator( './shared/pdf-samples/manual-form/manual_form_5.pdf' ,5 ,38,100)
+// await manualFormGenerator( './shared/pdf-samples/manual-form/manual_form_4.pdf' ,4 ,38,1)
+// await manualFormGenerator( './shared/pdf-samples/manual-form/manual_form_5.pdf' ,5 ,38,100)
+await pageDuplicatorGenerator(1,38,1)
 // await dynamicTestCaseGenerator(2, 25, 100);
 // await dynamicTestCaseGenerator(2, 26, 100);
 /** end of cases */

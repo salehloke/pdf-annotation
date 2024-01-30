@@ -10,8 +10,8 @@ export async function drawRandomSignatureWitness(
 ) {
   
   const x = isNaN(coordinateX) ? 115 : coordinateX    
-  const y = isNaN(coordinateY)  ? 535 : coordinateY  
-  const scaleXY = isNaN(scale) ? 0.45 : scale
+  const y = isNaN(coordinateY)  ? 515 : coordinateY  
+  const scaleXY = isNaN(scale) ? 0.35 : scale
   const xRandomizer = faker.number.int({max:50, min: -30})
   const yRandomizer = faker.number.int({max:10, min:0})
   // Add a signature image

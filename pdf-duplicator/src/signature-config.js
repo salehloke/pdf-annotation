@@ -27,6 +27,10 @@ export const GLOBAL_CONFIG = {
     decription: "manual_form_4",
     pdfPath: "./shared/pdf-samples/manual_form_4.pdf"
   },
+  SIGNATURE_PAGE_ONLY: {
+    decription: "signaturePageOnly",
+    pdfPath: "./shared/pdf-samples/signature-page.pdf"
+  },
 
 
   category: [

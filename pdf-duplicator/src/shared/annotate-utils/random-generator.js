@@ -191,7 +191,7 @@ export async function generateFormData(isMuslim){
 
     trustee1_name: trustee1.name,
     trustee1_gender: trustee1.gender,
-    trustee1_IDDesc: 'IC',
+    // trustee1_IDDesc: 'IC',
     trustee1_idDescription: 'IC',
     trustee1_idNumber: trustee1.IDNumber,
     trustee1_newIcNumber: trustee1.IDNumber,
@@ -200,7 +200,7 @@ export async function generateFormData(isMuslim){
     trustee1_occupation: trustee1.occupation,
     trustee1_nameOfEmployer: trustee1.nameOfEmployer,
     trustee1_natureOfBusiness: trustee1.natureOfBusiness,
-    trustee1_relationshipToPolicyOwner: trustee1.relationshipToPolicyOwner,
+    // trustee1_relationshipToPolicyOwner: trustee1.relationshipToPolicyOwner,
     trustee1_banksName: trustee1.banksName, // 
     trustee1_share: trustee1.share,
     trustee1_savingsAccountNumber: trustee1.savingsAccountNumber,
@@ -213,8 +213,8 @@ export async function generateFormData(isMuslim){
 
     trustee2_name: trustee2.name,
     trustee2_gender: trustee2.gender,
-    trustee2_IDDesc: 'IC',
-    trustee2_IDDescription: 'IC',
+    // trustee2_IDDesc: 'IC',
+    trustee2_idDescription: 'IC',
     trustee2_idNumber: trustee2.IDNumber,
     trustee2_newIcNumber: trustee2.IDNumber,
     trustee2_dateOfBirth: trustee2.dateOfBirth,
@@ -222,9 +222,9 @@ export async function generateFormData(isMuslim){
     trustee2_occupation: trustee2.occupation,
     trustee2_nameOfEmployer: trustee2.nameOfEmployer,
     trustee2_natureOfBusiness: trustee2.natureOfBusiness,
-    trustee2_relationshipToPolicyOwner: trustee2.relationshipToPolicyOwner,
+    // trustee2_relationshipToPolicyOwner: trustee2.relationshipToPolicyOwner,
     trustee2_banksName: trustee2.banksName, // 
-    trustee2_share: trustee2.share,
+    // trustee2_share: trustee2.share,
     trustee2_savingsAccountNumber: trustee2.savingsAccountNumber,
     trustee2_mailingAddress: trustee2.mailingAddress,
     trustee2_residentialAddress: trustee2.residentialAddress,

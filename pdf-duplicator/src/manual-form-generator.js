@@ -68,30 +68,31 @@ export async function manualFormGenerator(
         const signaturePage = page;
         // const signaturePage = pages[4];
         const { width, height } = signaturePage.getSize();
-        
+        console.log('width and height', width, height)
         
         /**
          * signature Section
         */
        if (isSignatureOfTrustee1 ) {
-         await drawRandomSignatureTrustee1(signaturePage,140,570,0.3)
+        //  await drawRandomSignatureTrustee1(signaturePage,140,570,0.3)
+         await drawRandomSignatureTrustee1(signaturePage,600,700,0.3)
          // await signTrustee1(signaturePage, imagePath, pdfDoc);
          // console.log("imagePath trustee1", imagePath);
         }
         
         if (isSignatureOfTrustee2 ) {
-          await drawRandomSignatureTrustee2(signaturePage, 375, 570, 0.3)
+          // await drawRandomSignatureTrustee2(signaturePage, 375, 570, 0.3)
           // await signTrustee2(signaturePage, imagePath, pdfDoc);
           // console.log("imagePath trustee2", imagePath);
         }
         
         if (isSignatureOfWitness) {
-          await drawRandomSignatureWitness(signaturePage, 140, 490, 0.3)
+          // await drawRandomSignatureWitness(signaturePage, 140, 490, 0.3)
           // console.log("imagePath witness", imagePath);
         }
         
         if (isSignatureOfPolicyHolder) {
-          await drawRandomSignaturePolicyholder(signaturePage,375, 490, 0.3)
+          // await drawRandomSignaturePolicyholder(signaturePage,375, 490, 0.3)
           // await signPolicyHolder(signaturePage, imagePath, pdfDoc);
           // console.log("imagePath policyholder", imagePath);
         }

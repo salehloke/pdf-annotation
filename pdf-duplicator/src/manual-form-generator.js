@@ -52,8 +52,7 @@ export async function manualFormGenerator(
 
     // Read the existing PDF
     const existingPdfBytes = await fs.readFile(pdfInputPath);
-    let signatureCount = 0;
-
+                                                                
     for (let i = 1; i <= count; i++) {
       // Load the existing PDF
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
@@ -75,26 +74,29 @@ export async function manualFormGenerator(
         */
        if (isSignatureOfTrustee1 ) {
         //  await drawRandomSignatureTrustee1(signaturePage,140,570,0.3)
-         await drawRandomSignatureTrustee1(signaturePage,600,700,0.3)
+         await drawRandomSignatureTrustee1(signaturePage,170,300,0.25)
          // await signTrustee1(signaturePage, imagePath, pdfDoc);
          // console.log("imagePath trustee1", imagePath);
         }
         
         if (isSignatureOfTrustee2 ) {
           // await drawRandomSignatureTrustee2(signaturePage, 375, 570, 0.3)
-          // await signTrustee2(signaturePage, imagePath, pdfDoc);
+         await drawRandomSignatureTrustee1(signaturePage,170,450,0.25)
+         // await signTrustee2(signaturePage, imagePath, pdfDoc);
           // console.log("imagePath trustee2", imagePath);
         }
         
         if (isSignatureOfWitness) {
           // await drawRandomSignatureWitness(signaturePage, 140, 490, 0.3)
-          // console.log("imagePath witness", imagePath);
+         await drawRandomSignatureTrustee1(signaturePage,230,300,0.25)
+         // console.log("imagePath witness", imagePath);
         }
         
         if (isSignatureOfPolicyHolder) {
           // await drawRandomSignaturePolicyholder(signaturePage,375, 490, 0.3)
           // await signPolicyHolder(signaturePage, imagePath, pdfDoc);
-          // console.log("imagePath policyholder", imagePath);
+         await drawRandomSignatureTrustee1(signaturePage,230,450,0.25)
+         // console.log("imagePath policyholder", imagePath);
         }
         /** end of signature section */
         

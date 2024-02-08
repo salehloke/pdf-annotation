@@ -17,13 +17,16 @@ export async function drawRandomSignature(
   const yRandomizer = faker.number.int({max:10, min:0})
   // Add a signature image
 
-  // draw 1 stroke
-  signaturePage.moveTo(x + xRandomizer,y + yRandomizer)
-  signaturePage.drawSvgPath(await randomSvgPath(), {scale: scaleXY, borderWidth:3})
-  
-  // draw 2nd stroke
-  signaturePage.moveTo(x + xRandomizer,y + yRandomizer)
-  signaturePage.drawSvgPath(await randomSvgPath(), {scale: scaleXY, borderWidth:2})
+  if(signaturePage){
+
+    // draw 1 stroke
+    signaturePage.moveTo(x + xRandomizer,y + yRandomizer)
+    signaturePage.drawSvgPath(await randomSvgPath(), {scale: scaleXY, borderWidth:3})
+    
+    // draw 2nd stroke
+    signaturePage.moveTo(x + xRandomizer,y + yRandomizer)
+    signaturePage.drawSvgPath(await randomSvgPath(), {scale: scaleXY, borderWidth:2})
+  }
   
   // draw 3rd stroke
   // signaturePage.moveTo(105,535)

@@ -36,7 +36,6 @@ export async function manualFormMuslimGenerator(
       GLOBAL_CONFIG.SIGNATURE_PAGE_ONLY; // using digital unsigned
 
     const caseName = `manualForm-muslim-scenario${scenarioNum}`;
-    const categoryObj = GLOBAL_CONFIG.category[4 - 1]; // because starts with 0
     const scenarioObj = GLOBAL_CONFIG.scenario[scenarioNum - 1]; // because starts with 0
 
     const isMuslim = true;
@@ -63,15 +62,27 @@ export async function manualFormMuslimGenerator(
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
       const duplicatePageCount = pageCount
       const newPDFDoc = await pageDuplicator(pdfDoc, duplicatePageCount)
+      const pages = newPDFDoc.getPages();
 
-      for (let index = 0; index < duplicatePageCount; index++) {
+      for (let index = 0; index <= pages.length; index++) {
 
-        const pages = pdfDoc.getPages();
         const signaturePage = pages[index];
-
+        console.log('page:', index, pdfCount, 'pages:', pages.length)
         /**
          * signature Section
          */
+        if(categoryNum === 6){
+          
+          // type 6
+          await drawRandomSignature(signaturePage, 230, 300, 0.25) // WITNESS
+          await drawRandomSignature(signaturePage, 230, 450, 0.25) // POLICY HOLDER
+          
+        }else{
+          //WITNESS SIGN
+          await drawRandomSignature(signaturePage, 170, 490,0.25)
+          //POLICY HOLDER SIGN
+          await drawRandomSignature(signaturePage, 345, 490, 0.25)
+        }
         if (isSignatureOfTrustee1) {
           // await drawRandomSignatureTrustee1(signaturePage, 115, 635)
           // await drawRandomSignatureTrustee1(signaturePage, 170, 300, 0.25)
@@ -85,12 +96,14 @@ export async function manualFormMuslimGenerator(
 
         if (isSignatureOfWitness) {
           // await drawRandomSignatureWitness(signaturePage, pdfDoc)
-          await drawRandomSignature(signaturePage, 230, 300, 0.25)
+          // await drawRandomSignature(signaturePage, 230, 300, 0.25) 
+          // type 7
         }
 
         if (isSignatureOfPolicyHolder) {
           // await drawRandomSignaturePolicyholder(signaturePage,pdfDoc)
-          await drawRandomSignature(signaturePage, 230, 450, 0.25)
+          // await drawRandomSignature(signaturePage, 230, 450, 0.25)
+          // type 7
         }
         /** end of signature section */
       }
@@ -134,7 +147,7 @@ export async function pageDuplicator(pdfDoc, count) {
   const newPDFDoc = await PDFDocument.create();
   const pages = pdfDoc.getPages();
   const signaturePage = pages[0];
-  for (let index = 0; index < count; index++) {
+  for (let index = 0; index <= count - pages.length; index++) {
 
     // Load the existing PDF
     const [signPageCopied] = await pdfDoc.copyPages(pdfDoc, [0])
@@ -150,5 +163,5 @@ export async function pageDuplicator(pdfDoc, count) {
     const pdfBytes = await pdfDoc.save()
   }
 
-  return newPDFDoc
+  return pdfDoc
 }

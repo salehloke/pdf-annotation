@@ -189,6 +189,7 @@ export class FormGeneratorService {
         pdfCount
     ) {
         try {
+            console.log('signed:',isSignatureOfTrustee1,isSignatureOfTrustee2,isSignatureOfWitness, isSignatureOfPolicyHolder)
 
             const caseName = `digitalForm-nonmuslim-scenario${scenarioNum}`;
 
@@ -217,14 +218,14 @@ export class FormGeneratorService {
                     /**
                      * signature Section
                      */
-                    if (isSignatureOfTrustee1) {
+                    if (isSignatureOfTrustee1 === true) {
                         const trustee1X = 115
                         const trustee1Y = 635
                         const trustee1Scale = 0.25
                         await this.drawRandomSignature(signaturePage, trustee1X, trustee1Y, trustee1Scale)
                     }
 
-                    if (isSignatureOfTrustee2) {
+                    if (isSignatureOfTrustee2 === true) {
                         const trustee2X = 370
                         const trustee2Y = 620
                         const trustee2Scale = 0.25
@@ -232,7 +233,7 @@ export class FormGeneratorService {
                         
                     }
 
-                    if (isSignatureOfWitness) {
+                    if (isSignatureOfWitness === true) {
 
                         const witnessX = 115
                         const witnessY = 515
@@ -240,7 +241,7 @@ export class FormGeneratorService {
                         await this.drawRandomSignature(signaturePage, witnessX, witnessY, scale)
                     }
 
-                    if (isSignatureOfPolicyHolder) {
+                    if (isSignatureOfPolicyHolder === true) {
                         const policyHolderX = 370
                         const policyHolderY = 515
                         const scale = 0.25
@@ -361,6 +362,9 @@ export class FormGeneratorService {
 
         return signaturePage
     }
+
+
+    
 
 
     //END Service

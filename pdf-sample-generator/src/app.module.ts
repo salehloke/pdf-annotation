@@ -8,7 +8,8 @@ import { LogUtilService } from 'shared/log-util.service';
 
 @Module({
   imports: [],
-  controllers: [AppController, FileController],
+  controllers: [
+     AppController, FileController],
   providers: [
     FormGeneratorService, LogUtilService, AppService],
 })

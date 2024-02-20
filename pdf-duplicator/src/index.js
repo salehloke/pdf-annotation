@@ -74,3 +74,7 @@ await dynamicTestCaseGenerator(1, 38, 2);
 
 // await logFormData()
 
+
+export async function base64Encoder(){
+    
+} 

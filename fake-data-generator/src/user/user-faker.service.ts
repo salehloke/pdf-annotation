@@ -18,7 +18,8 @@ export async function icGenerator(){
 
     const midIDNumber = faker.number.int({max:99, min:10})
     const lastIDNumber = faker.number.int({max:9999, min:1000})
-    const icNo = `${yearID}${monthID}${dayID}-${midIDNumber}-${lastIDNumber}`
+    // const icNo = `${yearID}${monthID}${dayID}-${midIDNumber}-${lastIDNumber}`
+    const icNo = `${yearID}${monthID}${dayID}${midIDNumber}${lastIDNumber}`
 
     return icNo
 
@@ -37,8 +38,11 @@ export class UserFakerService {
             "idType": "NRIC",
             "idNo": await icGenerator(),
             "countryCode": "+60",
-            "phoneNo": await faker.phone.number(),
-            "password": "123456",
+            "phoneNo": faker.string.numeric({
+                length: 12
+            }),
+            // "phoneNo": 123456789123,
+            "password": "E+_123456",
             "secretWord": "smile",
             "activePolicyNo": null,
             "staffId": null
@@ -46,5 +50,5 @@ export class UserFakerService {
 
         return data
 
-    }
+    }   
 }
